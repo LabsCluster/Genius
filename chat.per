@@ -1,0 +1,194 @@
+;Genius组件
+;Genius.chat
+;语音指令和交谈
+
+
+(defrule
+(town-under-attack)
+=>
+(chat-to-allies-using-id 22115)
+)
+
+(defrule
+(can-spy)
+=>
+(chat-to-all-using-id 22101)
+(disable-self)
+)
+
+(defrule
+(cheats-enabled)
+=>
+(chat-to-all "可以作弊!")
+(disable-self)
+)
+
+(defrule
+(enemy-buildings-in-town)
+=>
+(chat-to-allies-using-id 22115)
+(disable-self)
+)
+
+(defrule
+(enemy-captured-relics)
+=>
+(chat-to-all "敌对游戏者寻获所有的遗迹")
+(chat-to-all "战略人工智能自动以修道院及僧侣为攻击目标")
+(disable-self)
+)
+
+(defrule
+(regicide-game)
+=>
+(chat-to-all-using-id 22026)
+(disable-self)
+)
+
+(defrule
+(sheep-and-forage-too-far)
+=>
+(chat-to-allies-using-id 22304)
+(disable-self)
+)
+
+#load-if-defined FORTRESS-MAP
+(defrule
+(true)
+=>
+(chat-to-all "这是要塞地图.")
+(disable-self)
+)
+
+#end-if
+
+(defrule
+(building-type-count market > 0);有市场
+=>
+(chat-to-allies-using-id 22110)
+(disable-self)
+)
+
+
+
+
+(defrule
+(taunt-detected any-ally 3);索要食物
+(food-amount > 250);食物适量
+=>
+(release-escrow food)
+(tribute-to-player this-any-ally food 100)
+(chat-to-player this-any-ally "好的,给你100食物")
+(acknowledge-taunt this-any-ally 3)
+)
+
+(defrule
+(taunt-detected any-ally 3);索要食物
+(food-amount < 250);食物不足
+=>
+(chat-to-player this-any-ally "对不起,我也没有这么多食物...")
+(acknowledge-taunt this-any-ally 3)
+)
+
+(defrule
+(taunt-detected any-ally 4);索要木材
+(wood-amount > 200);木材适量
+=>
+(release-escrow wood)
+(tribute-to-player this-any-ally wood 100)
+(chat-to-player this-any-ally "好的,给你100木材")
+(acknowledge-taunt this-any-ally 4)
+)
+
+(defrule
+(taunt-detected any-ally 4);索要木材
+(wood-amount < 200);木材不足
+=>
+(chat-to-player this-any-ally "对不起,我也没有这么多木材...")
+(acknowledge-taunt this-any-ally 4)
+)
+
+(defrule
+(taunt-detected any-ally 5);索要黄金
+(gold-amount > 150);黄金适量
+=>
+(release-escrow gold)
+(tribute-to-player this-any-ally gold 100)
+(chat-to-player this-any-ally "好的,给你100黄金")
+(acknowledge-taunt this-any-ally 5)
+)
+
+(defrule
+(taunt-detected any-ally 5);索要黄金
+(gold-amount < 150);黄金不足
+=>
+(chat-to-player this-any-ally "对不起,我也没有这么多黄金...")
+(acknowledge-taunt this-any-ally 5)
+)
+
+(defrule
+(taunt-detected any-ally 6);索要石头
+(stone-amount > 100);石头适量
+=>
+(release-escrow stone)
+(tribute-to-player this-any-ally stone 100)
+(chat-to-player this-any-ally "好的,给你100石头")
+(acknowledge-taunt this-any-ally 6)
+)
+
+(defrule
+(taunt-detected any-ally 6);索要石头
+(stone-amount < 100);石头不足
+=>
+(chat-to-player this-any-ally "对不起,我也没有这么多石头...")
+(acknowledge-taunt this-any-ally 6)
+)
+
+(defrule
+(taunt-detected any-ally 31);被要求进攻敌人
+(current-age == dark-age);黑暗时代
+=>
+(chat-to-player-using-id this-any-ally 22165)
+(acknowledge-taunt this-any-ally 31)
+)
+
+(defrule
+(taunt-detected any-ally 31);被要求进攻敌人
+(current-age == imperial-age);帝王时代
+=>
+(chat-to-player-using-id this-any-ally 07140)
+(set-goal attackstat 4)
+(acknowledge-taunt this-any-ally 31)
+)
+
+(defrule
+(taunt-detected any-ally 42);询问时代
+(current-age == dark-age);黑暗时代
+=>
+(chat-to-player-using-id this-any-ally 22165)
+(acknowledge-taunt this-any-ally 42)
+)
+
+(defrule
+(taunt-detected any-ally 42);询问时代
+(current-age == feudal-age);封建时代
+=>
+(chat-to-player-using-id this-any-ally 22166)
+(acknowledge-taunt this-any-ally 42)
+)
+
+(defrule
+(taunt-detected any-ally 42);询问时代
+(current-age == castle-age);城堡时代
+=>
+(chat-to-player-using-id this-any-ally 22167)
+(acknowledge-taunt this-any-ally 42)
+)
+
+(defrule
+(taunt-detected any-ally 42);询问时代
+(current-age == imperial-age);帝王时代
+=>
+(chat-to-player-using-id this-any-ally 22168)
+(acknowledge-taunt this-any-ally 42)
+)
