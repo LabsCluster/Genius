@@ -1,0 +1,1038 @@
+;Genius 组件
+;cheat:super
+;超级作弊
+
+(defrule
+(goal cheatstat 1);超级作弊
+=>
+(cc-add-resource wood 50)
+(cc-add-resource gold 50)
+(cc-add-resource food 50)
+(cc-add-resource stone 50)
+)
+
+
+(defrule
+(building-type-count-total stable < 8)
+(can-build stable)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "超级作弊模式,建造马厩")
+(build stable);建造
+)
+
+(defrule
+(building-type-count-total barracks < 8)
+(can-build barracks)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "超级作弊模式,建造兵营")
+(build barracks);建造
+)
+
+(defrule
+(building-type-count-total archery-range < 8)
+(can-build archery-range)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "超级作弊模式,建造射箭场")
+(build archery-range);建造
+)
+
+(defrule
+(building-type-count-total castle < 8)
+(can-build castle)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "超级作弊模式,建造城堡")
+(build castle);建造
+)
+
+(defrule
+(building-type-count-total siege-workshop < 8)
+(can-build siege-workshop)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "超级作弊模式,建造攻城武器制造所")
+(build siege-workshop);建造
+)
+
+#load-if-defined AZTEC-CIV
+
+(defrule
+(can-build monastery)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "超级作弊模式,建造修道院")
+(build monastery);建造
+)
+#end-if
+
+
+;西班牙脚本
+#load-if-defined SPANISH-CIV
+(defrule
+(unit-type-count-total conquistador-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train conquistador-line);能生产西班牙征服者
+(town-under-attack);城镇收到攻击
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "一个西班牙征服者")
+(train conquistador-line)
+)
+
+(defrule
+(unit-type-count-total conquistador-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train conquistador-line);能生产西班牙征服者
+=>
+(chat-to-allies "一个西班牙征服者")
+(train conquistador-line)
+)
+#end-if
+
+;中国脚本
+#load-if-defined CHINESE-CIV
+(defrule
+(unit-type-count-total chu-ko-nu-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train chu-ko-nu-line);能生产诸葛弩
+(goal cheatstat 1);超级作弊
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个诸葛弩")
+(train chu-ko-nu-line)
+)
+
+(defrule
+(unit-type-count-total chu-ko-nu-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train chu-ko-nu-line);能生产诸葛弩
+=>
+(chat-to-allies "一个诸葛弩")
+(train chu-ko-nu-line)
+)
+#end-if
+
+;拜占庭脚本
+#load-if-defined BYZANTINE-CIV
+(defrule
+(unit-type-count-total cataphract-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train cataphract-line);能生产圣骑兵
+(goal cheatstat 1);超级作弊
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个圣骑兵")
+(train cataphract-line)
+)
+
+(defrule
+(unit-type-count-total cataphract-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train cataphract-line);能生产圣骑兵
+=>
+(chat-to-allies "一个圣骑兵")
+(train cataphract-line)
+)
+#end-if
+
+;条顿脚本
+#load-if-defined TEUTONIC-CIV
+(defrule
+(unit-type-count-total teutonic-knight-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train teutonic-knight-line);能生产条顿武士
+(town-under-attack);城镇收到攻击
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "一个条顿武士")
+(train teutonic-knight-line)
+)
+
+(defrule
+(unit-type-count-total teutonic-knight-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train teutonic-knight-line);能生产条顿武士
+=>
+(chat-to-allies "一个条顿武士")
+(train teutonic-knight-line)
+)
+#end-if
+
+;波斯脚本
+#load-if-defined PERSIAN-CIV
+(defrule
+(unit-type-count-total war-elephant-line < 10);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train war-elephant-line);能生产战象
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个战象")
+(train war-elephant-line)
+)
+
+(defrule
+(unit-type-count-total war-elephant-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train war-elephant-line);能生产战象
+=>
+(chat-to-allies "一个战象")
+(train war-elephant-line)
+)
+#end-if
+
+;蒙古脚本
+#load-if-defined MONGOL-CIV
+(defrule
+(unit-type-count-total mangudai-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train mangudai-line);能生产蒙古骑射手
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个蒙古骑射手")
+(train mangudai-line)
+)
+
+(defrule
+(unit-type-count-total mangudai-line < 35);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train mangudai-line);能生产蒙古骑射手
+=>
+(chat-to-allies "一个蒙古骑射手")
+(train mangudai-line)
+)
+#end-if
+
+;不列颠脚本
+#load-if-defined BRITON-CIV
+(defrule
+(unit-type-count-total longbowman-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train longbowman-line);能生产步弓手
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个步弓手")
+(train longbowman-line)
+)
+
+(defrule
+(unit-type-count-total longbowman-line < 40);未达人数限制
+(housing-headroom > 0 );有住房
+(goal cheatstat 1);超级作弊
+(current-age == imperial-age);帝王时代
+(can-train longbowman-line);能生产步弓手
+=>
+(chat-to-allies "一个步弓手")
+(train longbowman-line)
+)
+#end-if
+
+;日本脚本
+#load-if-defined JAPANESE-CIV
+(defrule
+(unit-type-count-total samurai-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train samurai-line);能生产日本武士
+(goal cheatstat 1);超级作弊
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个日本武士")
+(train samurai-line)
+)
+
+(defrule
+(unit-type-count-total samurai-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train samurai-line);能生产日本武士
+=>
+(chat-to-allies "一个日本武士")
+(train samurai-line)
+)
+#end-if
+
+;玛雅脚本
+#load-if-defined MAYAN-CIV
+(defrule
+(unit-type-count-total plumed-archer-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train plumed-archer-line);能生产羽箭手
+(goal cheatstat 1);超级作弊
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个羽箭手")
+(train plumed-archer-line)
+)
+
+(defrule
+(unit-type-count-total plumed-archer-line < 25);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train plumed-archer-line);能生产羽箭手
+=>
+(chat-to-allies "一个羽箭手")
+(train plumed-archer-line)
+)
+#end-if
+
+;匈奴脚本
+#load-if-defined HUN-CIV
+(defrule
+(unit-type-count-total tarkan-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train tarkan-line);能生产鞑靼骑兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个鞑靼骑兵")
+(train tarkan-line)
+)
+
+(defrule
+(unit-type-count-total tarkan-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train tarkan-line);能生产鞑靼骑兵
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "一个鞑靼骑兵")
+(train tarkan-line)
+)
+#end-if
+
+;土耳其脚本
+#load-if-defined TURKISH-CIV
+(defrule
+(unit-type-count-total janissary-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(goal cheatstat 1);超级作弊
+(current-age == castle-age);城堡时代
+(can-train janissary-line);能生产土耳其火枪兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个土耳其火枪兵")
+(train janissary-line)
+)
+
+(defrule
+(unit-type-count-total janissary-line < 35);未达人数限制
+(housing-headroom > 0 );有住房
+(goal cheatstat 1);超级作弊
+(current-age == imperial-age);帝王时代
+(can-train janissary-line);能生产土耳其火枪兵
+=>
+(chat-to-allies "一个土耳其火枪兵")
+(train janissary-line)
+)
+#end-if
+
+;维京脚本
+#load-if-defined VIKING-CIV
+(defrule
+(unit-type-count-total berserk-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train berserk-line);能生产狂战士
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个狂战士")
+(train berserk-line)
+)
+
+(defrule
+(unit-type-count-total berserk-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train berserk-line);能生产狂战士
+=>
+(chat-to-allies "一个狂战士")
+(train berserk-line)
+)
+#end-if
+
+;凯尔特脚本
+#load-if-defined CELTIC-CIV
+(defrule
+(unit-type-count-total woad-raider-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train woad-raider-line);能生产菘蓝武士
+(goal cheatstat 1);超级作弊
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个菘蓝武士")
+(train woad-raider-line)
+)
+
+(defrule
+(unit-type-count-total woad-raider-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train woad-raider-line);能生产菘蓝武士
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "一个菘蓝武士")
+(train woad-raider-line)
+)
+#end-if
+
+;撒拉逊脚本
+#load-if-defined SARACEN-CIV
+(defrule
+(unit-type-count-total mameluke-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train mameluke-line);能生产阿拉伯奴隶兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个阿拉伯奴隶兵")
+(train mameluke-line)
+)
+
+(defrule
+(unit-type-count-total mameluke-line < 25);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train mameluke-line);能生产阿拉伯奴隶兵
+=>
+(chat-to-allies "一个阿拉伯奴隶兵")
+(train mameluke-line)
+)
+#end-if
+
+;法兰克脚本
+#load-if-defined FRANKISH-CIV
+(defrule
+(unit-type-count-total throwing-axeman-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train throwing-axeman-line);能生产掷斧兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个掷斧兵")
+(train throwing-axeman-line)
+)
+
+(defrule
+(unit-type-count-total throwing-axeman-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(goal cheatstat 1);超级作弊
+(current-age == imperial-age);帝王时代
+(can-train throwing-axeman-line);能生产掷斧兵
+=>
+(chat-to-allies "一个掷斧兵")
+(train throwing-axeman-line)
+)
+#end-if
+
+;哥特脚本
+#load-if-defined GOTHIC-CIV
+(defrule
+(unit-type-count-total huskarl-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train huskarl-line);能生产近卫军
+(goal cheatstat 1);超级作弊
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个近卫军")
+(train huskarl-line)
+)
+
+(defrule
+(unit-type-count-total huskarl-line < 30);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train huskarl-line);能生产近卫军
+=>
+(chat-to-allies "一个近卫军")
+(train huskarl-line)
+)
+#end-if
+
+;高丽脚本
+#load-if-defined KOREAN-CIV
+(defrule
+(unit-type-count-total war-wagon-line < 10);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(goal cheatstat 1);超级作弊
+(can-train war-wagon-line);能生产马战车
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个马战车")
+(train war-wagon-line)
+)
+
+(defrule
+(unit-type-count-total war-wagon-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(goal cheatstat 1);超级作弊
+(can-train war-wagon-line);能生产马战车
+=>
+(chat-to-allies "一个马战车")
+(train war-wagon-line)
+)
+#end-if
+
+
+(defrule
+(unit-type-count-total scout-cavalry-line < 20)
+(can-train scout-cavalry-line)
+(goal cheatstat 1);超级作弊
+=>
+(chat-local "轻骑兵")
+(train scout-cavalry-line);轻骑兵
+)
+
+(defrule
+(unit-type-count-total eagle-warrior-line < 20)
+(can-train eagle-warrior-line)
+(goal cheatstat 1);超级作弊
+=>
+(chat-local "鹰战士")
+(train eagle-warrior-line);鹰战士
+)
+
+
+(defrule
+(unit-type-count-total skirmisher-line < 20)
+(can-train skirmisher-line)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "矛兵")
+(train skirmisher-line);矛兵
+)
+
+(defrule
+(unit-type-count-total spearman-line < 10)
+(can-train spearman-line)
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "长枪兵")
+(train spearman-line);长枪兵
+)
+
+
+(defrule
+(unit-type-count-total battering-ram < 10);未达数量限制
+(can-train battering-ram);能生产轻型攻城车
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "一个轻型攻城车")
+(train battering-ram);一个轻型攻城车
+)
+
+(defrule
+(unit-type-count-total mangonel < 10);未达数量限制
+(can-train mangonel);能生产投石车
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "一个投石车")
+(train mangonel);一个投石车
+)
+
+
+(defrule
+(unit-type-count-total militiaman-line < 10);未达人数限制
+(can-train militiaman-line);能生产步兵
+(goal cheatstat 1);超级作弊
+=>
+(chat-to-allies "一个步兵")
+(train militiaman-line);一个步兵
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-bloodlines)
+=>
+(research ri-bloodlines)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-husbandry)
+=>
+(research ri-husbandry)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-hussar)
+=>
+(research ri-hussar)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-wheel-barrow)
+=>
+(research ri-wheel-barrow)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-chemistry)
+=>
+(research ri-chemistry)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-forging)
+=>
+(research ri-forging)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-iron-casting)
+=>
+(research ri-iron-casting)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-leather-archer-armor)
+=>
+(research ri-leather-archer-armor)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-padded-archer-armor)
+=>
+(research ri-padded-archer-armor)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-ring-archer-armor)
+=>
+(research ri-ring-archer-armor)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-scale-mail)
+=>
+(research ri-scale-mail)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-heresy)
+=>
+(research ri-heresy)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-chemistry)
+=>
+(research ri-chemistry)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-fervor)
+=>
+(research ri-fervor)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-atonement)
+=>
+(research ri-atonement)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-redemption)
+=>
+(research ri-redemption)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-sanctity)
+=>
+(research ri-sanctity)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-theocracy)
+=>
+(research ri-theocracy)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-tracking)
+=>
+(research ri-tracking)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-squires)
+=>
+(research ri-squires)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-gold-mining)
+=>
+(research ri-gold-mining)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-stone-mining)
+=>
+(research ri-stone-mining)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-gold-shaft-mining)
+=>
+(research ri-gold-shaft-mining)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-stone-shaft-mining)
+=>
+(research ri-stone-shaft-mining)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-ballistics)
+=>
+(research ri-ballistics)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-fortified-wall)
+=>
+(research ri-fortified-wall)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-siege-engineers)
+=>
+(research ri-siege-engineers)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-heated-shot)
+=>
+(research ri-heated-shot)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-pikeman)
+=>
+(research ri-pikeman)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-halberdier)
+=>
+(research ri-halberdier)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-champion)
+=>
+(research ri-champion)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-man-at-arms)
+=>
+(research ri-man-at-arms)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-two-handed-swordsman)
+=>
+(research ri-two-handed-swordsman)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-long-swordsman)
+=>
+(research ri-long-swordsman)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-elite-eagle-warrior)
+=>
+(research ri-elite-eagle-warrior)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-thumb-ring)
+=>
+(research ri-thumb-ring)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-parthian-tactics)
+=>
+(research ri-parthian-tactics)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-capped-ram)
+=>
+(research ri-capped-ram)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-onager)
+=>
+(research ri-onager)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-siege-onager)
+=>
+(research ri-siege-onager)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-siege-ram)
+=>
+(research ri-siege-ram)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-elite-skirmisher)
+=>
+(research ri-elite-skirmisher)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-chain-mail)
+=>
+(research ri-chain-mail)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-chain-barding)
+=>
+(research ri-chain-barding)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-scale-barding)
+=>
+(research ri-scale-barding)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-scale-mail)
+=>
+(research ri-scale-mail)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research imperial-age)
+=>
+(research imperial-age)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-blast-furnace)
+=>
+(research ri-blast-furnace)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-guard-tower)
+=>
+(research ri-guard-tower)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-keep)
+=>
+(research ri-keep)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-hand-cart)
+=>
+(research ri-hand-cart)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-faith)
+=>
+(research ri-faith)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-masonry)
+=>
+(research ri-masonry)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-hoardings)
+=>
+(research ri-hoardings)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-sappers)
+=>
+(research ri-sappers)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-conscription)
+=>
+(research ri-conscription)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-plate-mail)
+=>
+(research ri-plate-mail)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-plate-barding)
+=>
+(research ri-plate-barding)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-architecture)
+=>
+(research ri-architecture)
+)
+
+(defrule
+(goal cheatstat 1);超级作弊
+(can-research ri-stonecutting)
+=>
+(research ri-stonecutting)
+)
+
+
+
+
+
+(defrule
+(housing-headroom < 20)
+(can-build house)
+(goal cheatstat 1);超级作弊
+=>
+(build house)
+)
+
+
+(defrule
+(game-time > 8)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 50);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 50);采集工人
+)
+
+
+#load-if-defined AZTEC-CIV
+;AZTEC僧侣暴
+(defrule
+(goal cheatstat 1)
+(can-train monk)
+=>
+(train monk)
+)
+
+(defrule
+(unit-type-count-total monk > 15)
+(goal cheatstat 1)
+=>
+(set-goal attackstat 2)
+)
+#end-if
