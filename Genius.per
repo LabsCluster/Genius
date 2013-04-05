@@ -1,0 +1,417 @@
+;Genius 2013 Beta 0.1 (内部版本号1.3.3.1)
+;Written By DGideas.
+;QQ:547339086
+;Copyright (C) DGideas 2012-2013
+;;;;;;;;;;配置限制;;;;;;;;;;
+;限制:陆战种族不限(AOFE除外).
+;推荐运行于1.0 C版本.
+;;;;;;;;;;程序特色;;;;;;;;;;
+;自选作弊,调整作弊级别
+;;;;;;;;;;荣誉墙;;;;;;;;;;
+;还空着.
+
+#load-if-not-defined DEATH-MATCH
+;不是决斗模式
+
+;设定常量(普通类)
+(load "Genius\defconst\normal")
+
+
+;设定goal类目标编号
+(load "Genius\defconst\goal")
+
+;剧情模式检测
+(load "Genius\DEngineI\DEngineI")
+
+;DEngineI引擎
+(load "Genius\debug")
+;测试模块
+
+(load "Genius\cheat\main");加载作弊模块
+
+;处理系统定义符号,判断条件
+#load-if-defined DIFFICULTY-HARDEST
+(defrule
+(true)
+=>
+(cc-add-resource food 350)
+(cc-add-resource wood 350)
+(cc-add-resource gold 350)
+(cc-add-resource stone 350)
+(disable-self)
+)
+
+#end-if
+
+#load-if-defined DIFFICULTY
+(defrule
+(true)
+=>
+(cc-add-resource food 200)
+(cc-add-resource wood 200)
+(cc-add-resource gold 200)
+(cc-add-resource stone 200)
+(disable-self)
+)
+
+#end-if
+
+
+
+
+(load "Genius\scan\run-scan")
+
+;策略设定
+
+(load "Genius\ssn")
+
+
+;(load "Genius\GEngineI\GEngineI")
+
+;资源状况自动检测(测试v2)
+
+(load "Genius\scan\need")
+
+
+;升级完成的动作
+
+(defrule
+(current-age == feudal-age);封建时代
+=>
+(chat-to-all "已升级至封建时代")
+(set-goal upgrade no);没有升级
+(set-strategic-number sn-blot-exploration-map 1);再探索地图
+(disable-self)
+)
+
+(defrule
+(current-age == castle-age);城堡时代
+=>
+(chat-to-all "已升级至城堡时代")
+(set-goal upgrade no);没有升级
+(chat-to-allies "取消了探索单位")
+(set-strategic-number sn-number-explore-groups 0);取消探索单位
+(chat-to-allies "一个伐木场")
+(build lumber-camp);建造伐木场
+(disable-self)
+)
+
+(defrule
+(current-age == imperial-age);帝王时代
+=>
+(chat-to-all "已升级至帝王时代")
+(set-goal upgrade no);没有升级
+(chat-to-allies "一个采矿场")
+(build mining-camp)
+(disable-self)
+)
+
+
+;游戏开始
+(load "Genius\start")
+
+(load "Genius\SmartEngine\smartengine")
+
+;通用脚本
+
+(defrule
+(unit-type-count-total militiaman-line < 3);未达人数限制
+(housing-headroom > 0 );有住房
+(can-train militiaman-line);能生产步兵
+(civilian-population >= age1villagernum);人数达标,防止要塞地图一开始就生兵
+=>
+(chat-to-allies "一个步兵")
+(train militiaman-line);一个步兵
+)
+
+(defrule
+(unit-type-count-total skirmisher-line < 3);未达人数限制
+(housing-headroom > 0 );有住房
+(can-train skirmisher-line);能生产矛兵
+(civilian-population >= age1villagernum);人数达标,防止要塞地图一开始就生兵
+=>
+(chat-to-allies "一个矛兵")
+(train skirmisher-line);一个矛兵
+)
+
+(defrule
+(unit-type-count-total skirmisher-line < 6);未达人数限制
+(housing-headroom > 0 );有住房
+(can-train skirmisher-line);能生产矛兵
+(current-age == castle-age);城堡时代
+=>
+(chat-to-allies "一个矛兵")
+(train skirmisher-line);一个矛兵
+)
+
+(defrule
+(unit-type-count-total monk < 3);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(not (town-under-attack));城镇没有收到攻击
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(gold-amount > 200);黄金充足
+(can-train monk);能生产僧侣
+=>
+(chat-to-allies "一个僧侣")
+(train monk);一个僧侣
+)
+
+(defrule
+(unit-type-count-total monk < 8);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(not (town-under-attack));城镇没有收到攻击
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(gold-amount > 200);黄金充足
+(can-train monk);能生产僧侣
+=>
+(chat-to-allies "一个僧侣")
+(train monk);一个僧侣
+)
+
+#load-if-defined DIFFICULTY-HARDEST
+(defrule
+(unit-type-count-total monk < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(not (town-under-attack));城镇没有收到攻击
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(gold-amount > 200);黄金充足
+(can-train monk);能生产僧侣
+=>
+(chat-to-allies "一个僧侣")
+(train monk);一个僧侣
+)
+
+#end-if
+
+#load-if-defined AZTEC-CIV
+(defrule
+(unit-type-count-total monk < 10);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(not (town-under-attack));城镇没有收到攻击
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(gold-amount > 200);黄金充足
+(can-train monk);能生产僧侣
+=>
+(chat-to-allies "一个僧侣")
+(train monk);一个僧侣
+)
+
+#end-if
+
+#load-if-defined AZTEC-CIV
+(defrule
+(unit-type-count-total monk < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(not (town-under-attack));城镇没有收到攻击
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(gold-amount > 200);黄金充足
+(can-train monk);能生产僧侣
+=>
+(chat-to-allies "一个僧侣")
+(train monk);一个僧侣
+)
+
+#end-if
+
+#load-if-defined DIFFICULTY
+(defrule
+(unit-type-count-total monk < 10);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(not (town-under-attack));城镇没有收到攻击
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(gold-amount > 200);黄金充足
+(can-train monk);能生产僧侣
+=>
+(chat-to-allies "一个僧侣")
+(train monk);一个僧侣
+)
+
+#end-if
+
+(defrule
+(unit-type-count-total battering-ram < 2);未达数量限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(not (town-under-attack));城镇没有收到攻击
+(can-train battering-ram);能生产轻型攻城车
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+=>
+(chat-to-allies "一个轻型攻城车")
+(train battering-ram);一个轻型攻城车
+)
+
+(defrule
+(unit-type-count-total battering-ram < 3);未达数量限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(not (town-under-attack));城镇没有收到攻击
+(can-train battering-ram);能生产轻型攻城车
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+=>
+(chat-to-allies "一个轻型攻城车")
+(train battering-ram);一个轻型攻城车
+)
+
+(defrule
+(unit-type-count-total mangonel < 1);未达数量限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(not (town-under-attack));城镇没有收到攻击
+(can-train mangonel);能生产投石车
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+=>
+(chat-to-allies "一个投石车")
+(train mangonel);一个投石车
+)
+
+(defrule
+(unit-type-count-total mangonel < 3);未达数量限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(not (town-under-attack));城镇没有收到攻击
+(can-train mangonel);能生产投石车
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+=>
+(chat-to-allies "一个投石车")
+(train mangonel);一个投石车
+)
+
+
+;自我防卫
+
+(defrule
+(current-age == dark-age);黑暗时代
+(town-under-attack);城镇受到攻击
+=>
+(chat-to-all "RUSH?这可不行,你等死吧!!!")
+(cc-add-resource food 350)
+(cc-add-resource wood 350)
+(cc-add-resource gold 350)
+(cc-add-resource stone 350)
+(set-goal rushyet yes)
+(disable-self)
+)
+
+(defrule
+(current-age == feudal-age);封建时代
+(town-under-attack);城镇受到攻击
+=>
+(chat-to-all "呵呵,你死定了")
+(cc-add-resource food 200)
+(cc-add-resource wood 200)
+(cc-add-resource gold 200)
+(cc-add-resource stone 200)
+(set-goal rushyet yes)
+(disable-self)
+)
+
+(defrule
+(current-age == castle-age);城堡时代
+(town-under-attack);城镇受到攻击
+=>
+(chat-to-all "找死!!!")
+(set-goal rushyet yes)
+(disable-self)
+)
+
+(defrule
+(current-age == imperial-age);帝王时代
+(town-under-attack);城镇受到攻击
+=>
+(chat-to-all "找死!!!")
+(set-goal rushyet yes)
+(disable-self)
+)
+
+
+;判断进攻条件
+
+(defrule
+(military-population >= armynum)
+(not (town-under-attack));城镇没有收到攻击
+=>
+(set-goal attackstat 2)
+)
+
+(defrule
+(military-population < armynum)
+(goal attackstat 2);攻击过,被击退了
+=>
+(set-goal attackstat 3)
+)
+
+(defrule
+(military-population < 5)
+(goal attackstat 4);攻击过,被击退了
+=>
+(set-goal attackstat 3)
+)
+
+
+;进攻
+
+(defrule
+(goal attackstat 2)
+=>
+(chat-to-all-using-id 07140)
+(attack-now)
+(set-goal attackyet yes)
+)
+
+(defrule
+(goal attackstat 4)
+=>
+(chat-to-all-using-id 07140)
+(attack-now)
+(set-goal attackyet yes)
+)
+
+(defrule
+(goal attackstat 2)
+=>
+(chat-to-all "SMTS攻击,冲啊!!!")
+(set-strategic-number sn-maximum-town-size 100);测试数值
+(attack-now)
+(set-goal attackyet yes)
+)
+
+(defrule
+(goal attackstat 4)
+=>
+(chat-to-all "SMTS攻击,冲啊!!!")
+(set-strategic-number sn-maximum-town-size 100);测试数值
+(attack-now)
+(set-goal attackyet yes)
+)
+
+(defrule
+(goal attackstat 3)
+=>
+;SMTS撤销
+(set-strategic-number sn-maximum-town-size 40);测试数值
+)
+
+
+#end-if
+
+
+;自动提醒
+
+
+;弃权(Beta)
+
+(load "Genius\resign")
+
+;响应聊天指令
+
+(load "Genius\chat")
+
+#load-if-defined DEATH-MATCH
+;(load "Genius\DEngineII\DEngineII")
+#end-if
