@@ -1,0 +1,24 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:build:mill
+;建造磨坊
+
+(defrule
+(building-type-count-total lumber-camp > 0);当存在伐木场
+(building-type-count-total mill == 0);且磨坊为0
+(wood-amount >= 100 );木材达标
+(can-build mill);能建造磨坊
+=>
+(chat-to-allies "一个磨坊")
+(build mill);建造
+)
+
+(defrule
+(current-age == castle-age);城堡时代
+(building-type-count-total mill == 1);且磨坊为1
+(wood-amount >= 100 );木材达标
+(can-build mill);能建造磨坊
+=>
+(set-strategic-number sn-mill-max-distance 100);最大磨坊距离100
+(chat-to-allies "另一个磨坊")
+(build mill);建造
+)

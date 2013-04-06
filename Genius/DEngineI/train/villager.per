@@ -1,0 +1,43 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:train:villager
+;训练村民
+
+(defrule
+(current-age == dark-age);黑暗时代
+(unit-type-count villager < age1villagernum);黑暗时代训练村民
+(housing-headroom > 0 );住房达标
+(can-train villager);能生产人
+=>
+(chat-to-allies "一个人")
+(train villager);一个人
+)
+
+(defrule
+(current-age == feudal-age);封建时代
+(unit-type-count villager < age2villagernum);封建时代训练村民
+(housing-headroom > 0 );有住房
+(can-train villager);能生产人
+=>
+(chat-to-allies "一个人")
+(train villager);一个人
+)
+
+(defrule
+(current-age == castle-age);城堡时代
+(unit-type-count villager < age3villagernum);城堡时代训练村民
+(housing-headroom > 0 );有住房
+(can-train villager);能生产人
+=>
+(chat-to-allies "一个人")
+(train villager);一个人
+)
+
+(defrule
+(current-age == imperial-age);帝王时代
+(unit-type-count villager < age4villagernum);帝王时代训练村民
+(housing-headroom > 0 );有住房
+(can-train villager);能生产人
+=>
+(chat-to-allies "一个人")
+(train villager);一个人
+)

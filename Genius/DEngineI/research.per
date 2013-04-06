@@ -1,0 +1,256 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:research
+;研究科技和时代
+
+;织布机(修订版)
+
+(defrule
+(unit-type-count villager >= age1villagernum);人数达标
+(can-research ri-loom);检测研发织布机
+(gold-amount >= 50);黄金达标
+=>
+(chat-to-allies "研发织布机")
+(research ri-loom);研发
+(disable-self)
+)
+
+(defrule
+(food-amount < 50 );食物不足
+(can-research ri-loom);检测研发织布机
+(gold-amount >= 50);黄金达标
+=>
+(chat-to-allies "研发织布机")
+(research ri-loom);研发
+(disable-self)
+)
+
+(defrule
+(housing-headroom == 0 );住房不足
+(unit-type-count villager >= 5);保证有一定人数
+(can-research ri-loom);检测研发织布机
+(gold-amount >= 50);黄金达标
+=>
+(chat-to-allies "研发织布机")
+(research ri-loom);研发
+(disable-self)
+)
+
+;伐木场项目
+(defrule
+(can-research ri-double-bit-axe);检测研发双面斧
+=>
+(chat-to-all "研发双面斧")
+(research ri-double-bit-axe);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-bow-saw);检测研发弓形锯
+=>
+(chat-to-all "研发弓形锯")
+(research ri-bow-saw);研发
+(disable-self)
+)
+
+;磨坊项目
+(defrule
+(can-research ri-horse-collar);检测研发兽耕
+=>
+(chat-to-all "研发兽耕")
+(research ri-horse-collar);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-heavy-plow);检测研发重犁
+=>
+(chat-to-all "研发重犁")
+(research ri-heavy-plow);研发
+(disable-self)
+)
+
+;城镇中心项目
+(defrule
+(can-research ri-wheel-barrow);检测研发独轮手推车
+=>
+(chat-to-all "研发独轮手推车")
+(research ri-wheel-barrow);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-town-patrol);检测研发城镇巡逻
+(current-age >= castle-age);至少城堡时代
+=>
+(chat-to-all "研发城镇巡逻")
+(research ri-town-patrol);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-town-watch);检测研发城镇了望
+(current-age >= castle-age);至少城堡时代
+(not (town-under-attack));城镇没有收到攻击
+=>
+(chat-to-all "研发城镇了望")
+(research ri-town-watch);研发
+(disable-self)
+)
+
+;市场项目
+(defrule
+(can-research ri-cartography);检测研发制图学
+(player-in-game any-ally);有同盟正在游戏
+=>
+(chat-to-all "研发制图学")
+(research ri-cartography);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-coinage);检测研发造币
+(player-in-game any-ally);有同盟正在游戏
+=>
+(chat-to-all "研发造币")
+(research ri-coinage);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-banking);检测研发银行业
+(player-in-game any-ally);有同盟正在游戏
+=>
+(chat-to-all "研发银行业")
+(research ri-banking);研发
+(disable-self)
+)
+
+;兵营项目
+(defrule
+(can-research ri-man-at-arms);检测研发剑士
+(current-age >= castle-age);至少城堡时代
+=>
+(chat-to-all "研发剑士")
+(research ri-man-at-arms);研发
+(disable-self)
+)
+
+;马厩项目
+(defrule
+(can-research ri-light-cavalry);检测研发轻骑兵
+=>
+(chat-to-all "研发轻骑兵")
+(research ri-light-cavalry);研发
+(disable-self)
+)
+
+;修道院项目
+(defrule
+(can-research ri-atonement);检测研发赎罪
+=>
+(chat-to-all "研发赎罪")
+(research ri-atonement);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-block-printing);检测研发雕版印刷术
+=>
+(chat-to-all "研发雕版印刷术")
+(research ri-block-printing);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-redemption);检测研发拯救
+(current-age == imperial-age);帝王时代
+=>
+(chat-to-all "研发拯救")
+(research ri-redemption);研发
+(disable-self)
+)
+
+(defrule
+(can-research ri-illumination);检测研发启示
+=>
+(chat-to-all "研发启示")
+(research ri-illumination);研发
+(disable-self)
+)
+
+;兵工厂项目
+(defrule
+(can-research ri-fletching);检测研发羽箭
+=>
+(chat-to-all "研发羽箭")
+(research ri-fletching);研发
+(disable-self)
+)
+
+;兵工厂项目
+(defrule
+(can-research ri-bodkin-arrow);检测研发未知科技
+=>
+(chat-to-all "研发锥子箭")
+(research ri-bodkin-arrow);研发锥子箭
+(disable-self)
+)
+
+;兵工厂项目
+(defrule
+(can-research ri-bracer);检测研发护腕
+=>
+(chat-to-all "研发护腕")
+(research ri-bracer);研发护腕
+(disable-self)
+)
+
+;大学项目
+(defrule
+(can-research ri-murder-holes);检测研发剁孔
+=>
+(chat-to-all "研发剁孔")
+(research ri-murder-holes);研发
+(disable-self)
+)
+
+;研发时代
+(defrule
+(current-age == dark-age);黑暗时代
+(unit-type-count villager >= age1villagernum);人数达标
+(food-amount >= 500);食物达标
+(can-research feudal-age);检测研发封建时代
+=>
+(chat-to-allies "研发封建时代")
+(set-goal upgrade age2)
+(research feudal-age);研发封建时代
+(chat-to-allies "增加了最大营地距离")
+(set-strategic-number sn-camp-max-distance 25);最大营地距离
+(set-strategic-number sn-maximum-town-size 30);最大城镇规模
+(disable-self)
+)
+
+(defrule
+(current-age == feudal-age);封建时代
+(unit-type-count villager >= age2villagernum);人数达标
+(can-research castle-age);检测研发城堡时代
+=>
+(chat-to-allies "研发城堡时代")
+(research castle-age);研发城堡时代
+(set-strategic-number sn-maximum-town-size 35);最大城镇规模
+(set-goal upgrade age3)
+(disable-self)
+)
+
+(defrule
+(current-age == castle-age);城堡时代
+(unit-type-count villager >= age3villagernum);人数达标
+(can-research imperial-age);检测研发帝王时代
+(can-build siege-workshop)
+=>
+(chat-to-allies "研发帝王时代")
+(set-goal upgrade age4)
+(research imperial-age);研发帝王时代
+(set-strategic-number sn-maximum-town-size 45);最大城镇规模
+(disable-self)
+)

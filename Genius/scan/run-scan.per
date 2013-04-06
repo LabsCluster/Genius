@@ -1,0 +1,71 @@
+;Genius 组件
+;scan:run-scan
+;检测AI运行条件
+
+
+#load-if-defined POPULATION-CAP-25
+(defrule
+(true)
+=>
+(chat-to-all "与其说是25人,不如说是不打.")
+(chat-to-all "真无聊,我退了.")
+(resign);弃权
+)
+
+#end-if
+
+#load-if-defined POPULATION-CAP-50
+(defrule
+(true)
+=>
+(chat-to-all "与其说是50人,不如说是不打.")
+(chat-to-all "真无聊,我退了.")
+(resign);弃权
+)
+
+#end-if
+
+#load-if-not-defined SPANISH-CIV
+#load-if-not-defined AZTEC-CIV
+#load-if-not-defined CHINESE-CIV
+#load-if-not-defined BYZANTINE-CIV
+#load-if-not-defined TEUTONIC-CIV
+#load-if-not-defined PERSIAN-CIV
+#load-if-not-defined MONGOL-CIV
+#load-if-not-defined BRITON-CIV
+#load-if-not-defined JAPANESE-CIV
+#load-if-not-defined MAYAN-CIV
+#load-if-not-defined HUN-CIV
+#load-if-not-defined TURKISH-CIV
+#load-if-not-defined VIKING-CIV
+#load-if-not-defined CELTIC-CIV
+#load-if-not-defined SARACEN-CIV
+#load-if-not-defined FRANKISH-CIV
+#load-if-not-defined GOTHIC-CIV
+#load-if-not-defined KOREAN-CIV
+
+(defrule
+(true)
+=>
+(chat-to-all "抱歉,我目前只会用帝国时代2征服者资料片中的种族.")
+(resign);弃权
+)
+
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if

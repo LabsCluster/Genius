@@ -1,0 +1,44 @@
+;Genius ×é¼ş :DEngine ÒıÇæ
+;DEngineI:train:scout-cavalry-line
+;ÑµÁ·ÇáÆï±øÏµÁĞ
+
+(defrule
+(current-age == imperial-age);µÛÍõÊ±´ú
+(food-amount > 800);Ê³Îï³ä×ã
+(can-train scout-cavalry-line)
+(unit-type-count scout-cavalry-line <= 10)
+(not(cc-players-unit-type-count any-enemy spearman-line > 6))
+=>
+(train scout-cavalry-line)
+(chat-local "ÇáÆï±ø")
+)
+
+(defrule
+(current-age == imperial-age);µÛÍõÊ±´ú
+(food-amount > 600);Ê³Îï³ä×ã
+(can-train scout-cavalry-line)
+(unit-type-count scout-cavalry-line <= 10)
+(town-under-attack)
+(not(cc-players-unit-type-count any-enemy spearman-line > 6))
+=>
+(train scout-cavalry-line)
+(chat-local "ÇáÆï±ø")
+)
+
+(defrule
+(cc-players-unit-type-count any-enemy monk > 3)
+(unit-type-count-total scout-cavalry-line < 10)
+(can-train scout-cavalry-line)
+=>
+(chat-local "ÇáÆï±ø")
+(train scout-cavalry-line);ÇáÆï±ø
+)
+
+(defrule
+(town-under-attack)
+(unit-type-count-total scout-cavalry-line < 5)
+(can-train scout-cavalry-line)
+=>
+(chat-local "ÇáÆï±ø")
+(train scout-cavalry-line);ÇáÆï±ø
+)

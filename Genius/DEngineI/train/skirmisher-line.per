@@ -1,0 +1,12 @@
+;Genius ×é¼þ :DEngineI ÒýÇæ
+;DEngineI:train:skirmisher-line
+;ÑµÁ·Ã¬±ø
+
+
+(defrule
+(cc-players-unit-type-count any-enemy spearman-line > 6)
+(unit-type-count-total skirmisher-line < 15)
+=>
+(chat-to-allies "Ã¬±ø")
+(train skirmisher-line);Ã¬±ø
+)

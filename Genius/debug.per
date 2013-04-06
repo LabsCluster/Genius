@@ -1,0 +1,28 @@
+;Genius 组件
+;debug
+;测试
+
+(defrule
+(game-time > 3)
+=>
+(chat-local "Debug模块正常")
+(disable-self)
+)
+
+;作弊
+
+(defrule
+(false);改为false,关闭作弊调试,改为true,打开作弊模式
+=>
+(set-goal cheatstat 1);超级作弊
+(disable-self)
+)
+
+;请在下方输入您的调试代码,如果您想添加功能,请使用plug-in,推荐在这里您只输入一些动作为chat的代码.
+;注意:由于部分代码未使用disable-self,故您的代码可能不会生效.推荐您使用plug-in
+
+(defrule
+(game-time > 36000);作弊时间,秒
+=>
+(set-goal cheatstat 0);不作弊
+)

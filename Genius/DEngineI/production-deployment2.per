@@ -1,0 +1,465 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:production-deployment2
+;生产部署,版本2.0
+
+(defrule
+(true)
+;游戏开始时,设置一次
+=>
+(set-strategic-number sn-food-gatherer-percentage 60);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(true)
+;游戏开始时,设置一次
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 100);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 0);采集工人
+(disable-self)
+)
+
+(defrule
+(game-time > 8)
+;应该盖起房子了
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 15);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 85);采集工人
+(disable-self)
+)
+
+(defrule
+(game-time >= 10)
+(players-unit-type-count 0 59 == 0)
+(players-unit-type-count 0 65 == 0)
+(players-unit-type-count 0 43 == 0)
+(unit-type-count 594 == 0)
+(unit-type-count 595 == 0)
+(unit-type-count 833 == 0)
+(unit-type-count 834 == 0)
+;已经过去10S,什么食物都没有找到,全员探索
+=>
+(set-strategic-number sn-percent-civilian-explorers 100);探索工人
+(set-strategic-number sn-percent-civilian-builders 0);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 0);采集工人
+(disable-self)
+)
+
+(defrule
+(game-time >= 20)
+(players-unit-type-count 0 59 == 0)
+(players-unit-type-count 0 65 == 0)
+(players-unit-type-count 0 43 == 0)
+(unit-type-count 594 == 0)
+(unit-type-count 595 == 0)
+(unit-type-count 833 == 0)
+(unit-type-count 834 == 0)
+;已经过去20S,什么食物都没有找到,改种田(通过DEngineI:build:farm)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 15);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 85);采集工人
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(building-type-count-total farm == 0);没种田
+(unit-type-count villager < 10);人少
+=>
+(set-strategic-number sn-food-gatherer-percentage 100);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 0);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(building-type-count-total farm > 0);种田
+(unit-type-count villager < 10);人少
+(food-amount < 50)
+(wood-amount > 60)
+=>
+(set-strategic-number sn-food-gatherer-percentage 100);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 0);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(building-type-count-total farm > 0);种田
+(unit-type-count villager < 10);人少
+(food-amount < 50)
+(wood-amount < 60)
+=>
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 60);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(building-type-count-total farm > 0);种田
+(unit-type-count villager < 10);人少
+(food-amount > 50)
+(wood-amount < 60)
+=>
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(building-type-count-total farm > 0);种田
+(unit-type-count villager < 10);人少
+(food-amount > 50)
+(wood-amount > 60)
+=>
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(building-type-count-total farm == 0);没种田
+(unit-type-count villager >= 10)
+=>
+(set-strategic-number sn-food-gatherer-percentage 80);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 20);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(building-type-count-total farm > 0);种田
+(unit-type-count villager >= 10)
+=>
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(food-amount > 300)
+(wood-amount > 200)
+;食物马上要升级,全采食物
+=>
+(set-strategic-number sn-food-gatherer-percentage 100);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 0);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(food-amount > 300)
+(wood-amount < 60)
+;食物够,木材不够
+=>
+(set-strategic-number sn-food-gatherer-percentage 75);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 25);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(food-amount < 300)
+(wood-amount < 100)
+;食物够,木材不够
+=>
+(set-strategic-number sn-food-gatherer-percentage 60);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没在升级
+(food-amount > 400)
+(wood-amount > 150)
+;马上升级
+=>
+(set-strategic-number sn-food-gatherer-percentage 100);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 0);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+;优先级较高,故不用disable-self
+)
+
+(defrule
+(current-age == dark-age);黑暗时代
+(goal upgrade age2);在升级至封建时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+(disable-self)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;以下代码暂时借用1.0版本资源部署:
+(defrule
+(goal foodneed 0)
+(goal woodneed 0)
+(goal goldneed 0)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 15);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 0)
+(goal goldneed 0)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal foodneed 0)
+(goal woodneed 1)
+(goal goldneed 0)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 70);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal foodneed 0)
+(goal woodneed 0)
+(goal goldneed 1)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 70);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal foodneed 0)
+(goal woodneed 0)
+(goal goldneed 0)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 70);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 1)
+(goal goldneed 0)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 0)
+(goal goldneed 1)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 40);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 0)
+(goal goldneed 0)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 40);采集石头
+)
+
+(defrule
+(goal foodneed 0)
+(goal woodneed 1)
+(goal goldneed 1)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 40);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal foodneed 0)
+(goal woodneed 1)
+(goal goldneed 0)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 40);采集石头
+)
+
+(defrule
+(goal foodneed 0)
+(goal woodneed 0)
+(goal goldneed 1)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 40);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 40);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 1)
+(goal goldneed 1)
+(goal stoneneed 0)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 30);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 1)
+(goal goldneed 0)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 30);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 0)
+(goal goldneed 1)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 30);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 30);采集石头
+)
+
+(defrule
+(goal foodneed 0)
+(goal woodneed 1)
+(goal goldneed 1)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 30);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 30);采集石头
+)
+
+(defrule
+(goal foodneed 1)
+(goal woodneed 1)
+(goal goldneed 1)
+(goal stoneneed 1)
+(current-age != dark-age);不是黑暗时代
+=>
+(set-strategic-number sn-food-gatherer-percentage 25);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 25);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 25);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 25);采集石头
+)

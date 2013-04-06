@@ -1,0 +1,411 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:train:castle-train
+;城堡生产部队
+
+;西班牙脚本
+#load-if-defined SPANISH-CIV
+(defrule
+(unit-type-count-total conquistador-line < 6);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train conquistador-line);能生产西班牙征服者
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个西班牙征服者")
+(train conquistador-line)
+)
+
+(defrule
+(unit-type-count-total conquistador-line < 16);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train conquistador-line);能生产西班牙征服者
+=>
+(chat-to-allies "一个西班牙征服者")
+(train conquistador-line)
+)
+#end-if
+
+;中国脚本
+#load-if-defined CHINESE-CIV
+(defrule
+(unit-type-count-total chu-ko-nu-line < 6);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train chu-ko-nu-line);能生产诸葛弩
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个诸葛弩")
+(train chu-ko-nu-line)
+)
+
+(defrule
+(unit-type-count-total chu-ko-nu-line < 16);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train chu-ko-nu-line);能生产诸葛弩
+=>
+(chat-to-allies "一个诸葛弩")
+(train chu-ko-nu-line)
+)
+#end-if
+
+;拜占庭脚本
+#load-if-defined BYZANTINE-CIV
+(defrule
+(unit-type-count-total cataphract-line < 5);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train cataphract-line);能生产圣骑兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个圣骑兵")
+(train cataphract-line)
+)
+
+(defrule
+(unit-type-count-total cataphract-line < 10);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train cataphract-line);能生产圣骑兵
+=>
+(chat-to-allies "一个圣骑兵")
+(train cataphract-line)
+)
+#end-if
+
+;条顿脚本
+#load-if-defined TEUTONIC-CIV
+(defrule
+(unit-type-count-total teutonic-knight-line < 5);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train teutonic-knight-line);能生产条顿武士
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个条顿武士")
+(train teutonic-knight-line)
+)
+
+(defrule
+(unit-type-count-total teutonic-knight-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train teutonic-knight-line);能生产条顿武士
+=>
+(chat-to-allies "一个条顿武士")
+(train teutonic-knight-line)
+)
+#end-if
+
+;波斯脚本
+#load-if-defined PERSIAN-CIV
+(defrule
+(unit-type-count-total war-elephant-line < 4);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train war-elephant-line);能生产战象
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个战象")
+(train war-elephant-line)
+)
+
+(defrule
+(unit-type-count-total war-elephant-line < 8);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train war-elephant-line);能生产战象
+=>
+(chat-to-allies "一个战象")
+(train war-elephant-line)
+)
+#end-if
+
+;蒙古脚本
+#load-if-defined MONGOL-CIV
+(defrule
+(unit-type-count-total mangudai-line < 5);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train mangudai-line);能生产蒙古骑射手
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个蒙古骑射手")
+(train mangudai-line)
+)
+
+(defrule
+(unit-type-count-total mangudai-line < 12);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train mangudai-line);能生产蒙古骑射手
+=>
+(chat-to-allies "一个蒙古骑射手")
+(train mangudai-line)
+)
+#end-if
+
+;不列颠脚本
+#load-if-defined BRITON-CIV
+(defrule
+(unit-type-count-total longbowman-line < 6);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train longbowman-line);能生产步弓手
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个步弓手")
+(train longbowman-line)
+)
+
+(defrule
+(unit-type-count-total longbowman-line < 16);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train longbowman-line);能生产步弓手
+=>
+(chat-to-allies "一个步弓手")
+(train longbowman-line)
+)
+#end-if
+
+;日本脚本
+#load-if-defined JAPANESE-CIV
+(defrule
+(unit-type-count-total samurai-line < 7);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train samurai-line);能生产日本武士
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个日本武士")
+(train samurai-line)
+)
+
+(defrule
+(unit-type-count-total samurai-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train samurai-line);能生产日本武士
+=>
+(chat-to-allies "一个日本武士")
+(train samurai-line)
+)
+#end-if
+
+;玛雅脚本
+#load-if-defined MAYAN-CIV
+(defrule
+(unit-type-count-total plumed-archer-line < 6);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train plumed-archer-line);能生产羽箭手
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个羽箭手")
+(train plumed-archer-line)
+)
+
+(defrule
+(unit-type-count-total plumed-archer-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train plumed-archer-line);能生产羽箭手
+=>
+(chat-to-allies "一个羽箭手")
+(train plumed-archer-line)
+)
+#end-if
+
+;匈奴脚本
+#load-if-defined HUN-CIV
+(defrule
+(unit-type-count-total tarkan-line < 5);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train tarkan-line);能生产鞑靼骑兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个鞑靼骑兵")
+(train tarkan-line)
+)
+
+(defrule
+(unit-type-count-total tarkan-line < 12);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train tarkan-line);能生产鞑靼骑兵
+=>
+(chat-to-allies "一个鞑靼骑兵")
+(train tarkan-line)
+)
+#end-if
+
+;土耳其脚本
+#load-if-defined TURKISH-CIV
+(defrule
+(unit-type-count-total janissary-line < 8);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train janissary-line);能生产土耳其火枪兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个土耳其火枪兵")
+(train janissary-line)
+)
+
+(defrule
+(unit-type-count-total janissary-line < 18);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train janissary-line);能生产土耳其火枪兵
+=>
+(chat-to-allies "一个土耳其火枪兵")
+(train janissary-line)
+)
+#end-if
+
+;维京脚本
+#load-if-defined VIKING-CIV
+(defrule
+(unit-type-count-total berserk-line < 8);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train berserk-line);能生产狂战士
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个狂战士")
+(train berserk-line)
+)
+
+(defrule
+(unit-type-count-total berserk-line < 20);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train berserk-line);能生产狂战士
+=>
+(chat-to-allies "一个狂战士")
+(train berserk-line)
+)
+#end-if
+
+;凯尔特脚本
+#load-if-defined CELTIC-CIV
+(defrule
+(unit-type-count-total woad-raider-line < 8);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train woad-raider-line);能生产菘蓝武士
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个菘蓝武士")
+(train woad-raider-line)
+)
+
+(defrule
+(unit-type-count-total woad-raider-line < 18);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train woad-raider-line);能生产菘蓝武士
+=>
+(chat-to-allies "一个菘蓝武士")
+(train woad-raider-line)
+)
+#end-if
+
+;撒拉逊脚本
+#load-if-defined SARACEN-CIV
+(defrule
+(unit-type-count-total mameluke-line < 7);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train mameluke-line);能生产阿拉伯奴隶兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个阿拉伯奴隶兵")
+(train mameluke-line)
+)
+
+(defrule
+(unit-type-count-total mameluke-line < 15);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train mameluke-line);能生产阿拉伯奴隶兵
+=>
+(chat-to-allies "一个阿拉伯奴隶兵")
+(train mameluke-line)
+)
+#end-if
+
+;法兰克脚本
+#load-if-defined FRANKISH-CIV
+(defrule
+(unit-type-count-total throwing-axeman-line < 8);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train throwing-axeman-line);能生产掷斧兵
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个掷斧兵")
+(train throwing-axeman-line)
+)
+
+(defrule
+(unit-type-count-total throwing-axeman-line < 16);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train throwing-axeman-line);能生产掷斧兵
+=>
+(chat-to-allies "一个掷斧兵")
+(train throwing-axeman-line)
+)
+#end-if
+
+;哥特脚本
+#load-if-defined GOTHIC-CIV
+(defrule
+(unit-type-count-total huskarl-line < 8);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train huskarl-line);能生产近卫军
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个近卫军")
+(train huskarl-line)
+)
+
+(defrule
+(unit-type-count-total huskarl-line < 16);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train huskarl-line);能生产近卫军
+=>
+(chat-to-allies "一个近卫军")
+(train huskarl-line)
+)
+#end-if
+
+;高丽脚本
+#load-if-defined KOREAN-CIV
+(defrule
+(unit-type-count-total war-wagon-line < 4);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == castle-age);城堡时代
+(can-train war-wagon-line);能生产马战车
+(town-under-attack);城镇收到攻击
+=>
+(chat-to-allies "一个马战车")
+(train war-wagon-line)
+)
+
+(defrule
+(unit-type-count-total war-wagon-line < 10);未达人数限制
+(housing-headroom > 0 );有住房
+(current-age == imperial-age);帝王时代
+(can-train war-wagon-line);能生产马战车
+=>
+(chat-to-allies "一个马战车")
+(train war-wagon-line)
+)
+#end-if

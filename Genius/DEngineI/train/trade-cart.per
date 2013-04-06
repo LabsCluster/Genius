@@ -1,0 +1,56 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:train:trade-cart
+;生产贸易马车
+
+(defrule
+(current-age == feudal-age);封建时代
+(housing-headroom > 1 );有住房
+(building-type-count market > 0);有市场
+(can-train trade-cart);能建造贸易马车
+(unit-type-count trade-cart == 0);数量
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(player-in-game any-ally);有同盟正在游戏
+(timer-triggered 1)
+(not(town-under-attack))
+(false);暂时取消封建时代贸易马车
+=>
+(chat-to-allies "一个贸易马车")
+(train trade-cart)
+)
+
+(defrule
+(current-age == castle-age);城堡时代
+(housing-headroom > 1 );有住房
+(building-type-count market > 0);有市场
+(can-train trade-cart);能建造贸易马车
+(unit-type-count trade-cart <= 1);数量
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(player-in-game any-ally);有同盟正在游戏
+(timer-triggered 1)
+(not(town-under-attack))
+=>
+(chat-to-allies "一个贸易马车")
+(train trade-cart)
+)
+
+(defrule
+(current-age == imperial-age);帝王时代
+(housing-headroom > 1 );有住房
+(building-type-count market > 0);有市场
+(can-train trade-cart);能建造贸易马车
+(unit-type-count trade-cart <= 2);数量
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(player-in-game any-ally);有同盟正在游戏
+(timer-triggered 1)
+(not(town-under-attack))
+=>
+(chat-to-allies "一个贸易马车")
+(train trade-cart)
+)
+
+(defrule
+(unit-type-count 29 > 0)
+=>
+(chat-local "有贸易马车死亡")
+(enable-timer 1 60)
+)

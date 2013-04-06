@@ -1,0 +1,13 @@
+;Genius 组件 :DEngineI 组件
+;DEngineI:build:university
+;建造大学
+
+
+(defrule
+(building-type-count-total university == 0);没有大学
+(can-build university);能建造大学
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+=>
+(build university);建造大学
+(chat-to-allies "建造大学")
+)

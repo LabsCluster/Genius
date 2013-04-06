@@ -1,0 +1,11 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:train:fishing-ship
+;建造渔船
+
+(defrule
+(can-train fishing-ship)
+(unit-type-count-total fishing-ship <= 5)
+=>
+(train fishing-ship)
+(chat-to-allies "渔船")
+)

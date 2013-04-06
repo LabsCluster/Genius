@@ -1,11 +1,11 @@
-;Genius ç»„ä»¶
+;Genius ×é¼ş
 ;resign
-;ç”¨äºå¼ƒæƒ
+;ÓÃÓÚÆúÈ¨
 
 (defrule
-(unit-type-count villager <= 1);äººæ•°å¾ˆå°‘
+(unit-type-count villager <= 1);ÈËÊıºÜÉÙ
 =>
-;å‘åŒç›Ÿæä¾›æ‰€æœ‰èµ„æº
+;ÏòÍ¬ÃËÌá¹©ËùÓĞ×ÊÔ´
 (release-escrow wood)
 (release-escrow food)
 (release-escrow gold)
@@ -14,7 +14,7 @@
 (tribute-to-player this-any-ally food 10000)
 (tribute-to-player this-any-ally gold 10000)
 (tribute-to-player this-any-ally stone 10000)
-;æ‘§æ¯éƒ¨åˆ†å»ºç­‘
+;´İ»Ù²¿·Ö½¨Öş
 (delete-building mill)
 (delete-building mining-camp)
 (delete-building monastery)
@@ -23,12 +23,12 @@
 (delete-building siege-workshop)
 (delete-building market)
 )
-;è§„åˆ™å¤ªé•¿,åˆ†å¼€å†™
+;¹æÔòÌ«³¤,·Ö¿ªĞ´
 (defrule
-(unit-type-count villager <= 1);äººæ•°å¾ˆå°‘
+(unit-type-count villager <= 1);ÈËÊıºÜÉÙ
 =>
-;å®£å¸ƒå¼ƒæƒ
+;Ğû²¼ÆúÈ¨
 (chat-to-all-using-id 22314)
-;å¼ƒæƒ
+;ÆúÈ¨
 (resign)
 )

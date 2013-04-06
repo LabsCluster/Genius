@@ -1,0 +1,32 @@
+;Genius 组件
+;start
+;游戏开始
+
+
+(defrule;游戏开始
+(building-type-count-total town-center > 0);当存在城镇中心
+=>
+(set-strategic-number sn-mill-max-distance 50);最大磨坊距离50
+(set-strategic-number sn-minimum-dropsite-buffer 50);存储地与敌人保持50
+(set-strategic-number sn-required-forest-tiles 15);建设伐木场需发现树15
+(set-strategic-number sn-camp-max-distance 25);最大营地距离
+(chat-to-all "游戏开始")
+(train villager);一个人
+(disable-self)
+)
+
+(defrule;游戏开始
+(building-type-count-total town-center == 0);城镇中心为0(游牧民族地图或者城镇中心被击垮)
+=>
+(set-strategic-number sn-mill-max-distance 100);最大磨坊距离100
+(set-strategic-number sn-minimum-dropsite-buffer 50);存储地与敌人保持50
+(set-strategic-number sn-required-forest-tiles 15);建设伐木场需发现树15
+(set-strategic-number sn-camp-max-distance 25);最大营地距离
+(chat-to-all "游戏开始")
+(chat-to-all "游牧民族地图")
+(chat-to-allies "一个城镇中心")
+(build town-center);一个城镇中心
+(chat-to-allies "已经构造环形防线")
+(enable-wall-placement 2);启动环形防线2
+(disable-self)
+)

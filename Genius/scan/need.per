@@ -1,0 +1,135 @@
+;Genius组件
+;Genius.scan.need
+;资源检测
+
+(defrule
+(food-amount < 75)
+=>
+(set-goal foodneed yes);食物缺口
+)
+
+(defrule
+(wood-amount < 75)
+=>
+(set-goal woodneed yes);木材缺口
+)
+
+(defrule
+(gold-amount < 50)
+=>
+(set-goal goldneed yes);黄金缺口
+)
+
+(defrule
+(stone-amount < 50)
+=>
+(set-goal stoneneed yes);石头缺口
+)
+
+(defrule
+(food-amount > 500)
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没有升级
+=>
+(set-goal foodneed no);食物充足
+)
+
+(defrule
+(wood-amount > 100)
+(current-age == dark-age);黑暗时代
+(goal upgrade no);没有升级
+=>
+(set-goal woodneed no);木材充足
+)
+
+(defrule
+(wood-amount > 100)
+(current-age == dark-age);黑暗时代
+(goal upgrade age2);升级
+=>
+(set-goal woodneed no);木材充足
+)
+
+(defrule
+(food-amount > 200)
+(current-age == dark-age);黑暗时代
+(goal upgrade age2);升级
+=>
+(set-goal foodneed no);食物充足
+)
+
+(defrule
+(food-amount > 700)
+(current-age == feudal-age);封建时代
+(goal upgrade no);没有升级
+=>
+(set-goal foodneed no);食物充足
+)
+
+(defrule
+(wood-amount > 200)
+(current-age == feudal-age);封建时代
+(goal upgrade no);没有升级
+=>
+(set-goal woodneed no);木材充足
+)
+
+(defrule
+(gold-amount > 200)
+(current-age == feudal-age);封建时代
+(goal upgrade no);没有升级
+=>
+(set-goal goldneed no);黄金充足
+)
+
+(defrule
+(stone-amount > 100)
+(current-age == feudal-age);封建时代
+(goal upgrade no);没有升级
+=>
+(set-goal stoneneed no);石头充足
+)
+
+(defrule
+(food-amount > 200)
+(current-age == feudal-age);封建时代
+(goal upgrade age3);升级
+=>
+(set-goal foodneed no);食物充足
+)
+
+(defrule
+(wood-amount > 200)
+(current-age == feudal-age);封建时代
+(goal upgrade age3);升级
+=>
+(set-goal woodneed no);木材充足
+)
+
+(defrule
+(gold-amount > 200)
+(current-age == feudal-age);封建时代
+(goal upgrade age3);升级
+=>
+(set-goal goldneed no);黄金充足
+)
+
+(defrule
+(stone-amount > 100)
+(current-age == feudal-age);封建时代
+(goal upgrade age3);升级
+=>
+(set-goal stoneneed no);石头充足
+)
+
+(defrule
+(gold-amount > 1000)
+=>
+(set-goal goldneed no);黄金充足
+)
+
+(defrule
+(stone-amount > 800)
+=>
+(set-goal stoneneed no);石头充足
+)

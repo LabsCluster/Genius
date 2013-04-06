@@ -1,0 +1,21 @@
+;Genius ×é¼þ : DEngineI ÒýÇæ
+;DEngineI:train:spearman-line
+;ÑµÁ·³¤Ç¹±ø
+
+(defrule
+(cc-players-unit-type-count any-enemy camel-line > 5)
+(unit-type-count-total spearman-line < 10)
+(can-train spearman-line)
+=>
+(chat-to-allies "³¤Ç¹±ø")
+(train spearman-line);³¤Ç¹±ø
+)
+
+(defrule
+(cc-players-unit-type-count any-enemy scout-cavalry-line > 5)
+(unit-type-count-total spearman-line < 10)
+(can-train spearman-line)
+=>
+(chat-to-allies "³¤Ç¹±ø")
+(train spearman-line);³¤Ç¹±ø
+)

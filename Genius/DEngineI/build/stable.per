@@ -1,0 +1,27 @@
+;Genius 组件 :DEngine 引擎
+;DEngineI:build:stable
+;建造马厩
+
+(defrule
+(building-type-count-total stable == 0);马厩为0
+(building-type-count-total monastery >= 1);有修道院
+(building-type-count-total archery-range >= 1);有射箭场
+(can-build stable);能建造
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+=>
+(chat-to-allies "建造马厩")
+(build stable);建造
+)
+
+(defrule
+(building-type-count-total stable == 1);马厩为1
+(building-type-count-total monastery >= 1);有修道院
+(building-type-count-total archery-range >= 1);有射箭场
+(can-build stable);能建造
+(building-type-count-total town-center > 0);当存在城镇中心:防止城镇中心被毁后建造失控
+(current-age == imperial-age);帝王时代
+(wood-amount > 300)
+=>
+(chat-to-allies "建造马厩")
+(build stable);建造
+)

@@ -1,0 +1,911 @@
+;Genius组件:DEngineII引擎
+;Genius.DEngineII.pd3
+;生产部署,版本3.0
+;注意:部分代码可能同时触发，请保证村民更换工作至少资源采集量策略值不为0!
+;DO-NOT-SET-SOME-STRATEGIC-NUMBER-TO-0!
+
+
+(defrule
+(true)
+;游戏开始时,设置一次
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 100);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 0);采集工人
+(set-strategic-number sn-food-gatherer-percentage 60);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+(disable-self)
+)
+
+(defrule
+(building-type-count house >= 1)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(disable-self)
+)
+
+(defrule
+(game-time > 10)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(disable-self)
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 100)
+(wood-amount > 300)
+(current-age == dark-age);黑暗时代
+;木材多建农田
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 90);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 50)
+(wood-amount > 200)
+(unit-type-count 594 == 0)
+(unit-type-count 595 == 0)
+(unit-type-count 833 == 0)
+(unit-type-count 834 == 0)
+(current-age == dark-age);黑暗时代
+;无羊鸡建农田
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 90);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 500)
+(wood-amount < 200)
+(current-age == dark-age);黑暗时代
+;木材少食物多剧情
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 60);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 500)
+(wood-amount < 200)
+(gold-amount < 500)
+(stone-amount < 500)
+(current-age == dark-age);黑暗时代
+;剧情
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 20);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 35);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 35);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 500)
+(wood-amount < 200)
+(gold-amount > 500)
+(stone-amount < 500)
+(current-age == dark-age);黑暗时代
+;剧情
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 20);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 55);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 500)
+(wood-amount < 200)
+(gold-amount < 500)
+(stone-amount > 500)
+(current-age == dark-age);黑暗时代
+;剧情
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 20);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 55);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 15);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 500)
+(wood-amount < 200)
+(gold-amount > 500)
+(stone-amount > 500)
+(current-age == dark-age);黑暗时代
+;剧情
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 25);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 25);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 25);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 25);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 50)
+(wood-amount < 200)
+(unit-type-count 594 > 0)
+(current-age == dark-age);黑暗时代
+;食物跟不上(有羊鸡)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 50)
+(wood-amount < 200)
+(unit-type-count 595 > 0)
+(current-age == dark-age);黑暗时代
+;食物跟不上(有羊鸡)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 50)
+(wood-amount < 200)
+(unit-type-count 833 > 0)
+(current-age == dark-age);黑暗时代
+;食物跟不上(有羊鸡)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 50)
+(wood-amount < 200)
+(unit-type-count 834 > 0)
+(current-age == dark-age);黑暗时代
+;食物跟不上(有羊鸡)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 100)
+(wood-amount < 30)
+(current-age == dark-age);黑暗时代
+;木材跟不上
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 70);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 50)
+(wood-amount < 30)
+(housing-headroom > 0);有空房
+(current-age == dark-age);黑暗时代
+;都不行(有闲房)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 80);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 20);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 50)
+(wood-amount < 30)
+(housing-headroom == 0);无空房
+(current-age == dark-age);黑暗时代
+;都不行(无闲房)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage70);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 100)
+(wood-amount < 100)
+(current-age == dark-age);黑暗时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 50);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 100)
+(wood-amount > 150)
+(current-age == dark-age);黑暗时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 90);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 100)
+(wood-amount > 200)
+(current-age == dark-age);黑暗时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 90);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 350)
+(wood-amount < 150)
+(current-age == dark-age);黑暗时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 50);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 450)
+(wood-amount < 200)
+(current-age == dark-age);黑暗时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 50);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 800)
+(wood-amount > 500)
+(current-age == dark-age);黑暗时代
+;疑似死斗模式
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 90);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 10);采集工人
+(set-strategic-number sn-food-gatherer-percentage 15);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 15);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 70);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade age2)
+(food-amount < 100)
+(wood-amount < 100)
+(current-age == dark-age);黑暗时代
+;不行了
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 50);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade age2)
+(food-amount < 100)
+(wood-amount > 100)
+(current-age == dark-age);黑暗时代
+;食物不行
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 70);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade age2)
+(food-amount > 100)
+(wood-amount < 100)
+(current-age == dark-age);黑暗时代
+;木材不行
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 70);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade age2)
+(food-amount > 100)
+(wood-amount > 100)
+(building-type-count-total mining-camp >= 2)
+(current-age == dark-age);黑暗时代
+;挺好
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal upgrade age2)
+(food-amount > 100)
+(wood-amount > 100)
+(stone-amount > 500)
+(building-type-count-total mining-camp >= 2)
+(current-age == dark-age);黑暗时代
+;挺好(剧情?)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 20);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 125)
+(wood-amount < 125)
+(housing-headroom > 0);有空房
+(current-age == feudal-age);封建时代
+;不行了
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 60);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 5);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 5);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 125)
+(wood-amount < 125)
+(wood-amount > 30)
+(housing-headroom == 0);无空房
+(current-age == feudal-age);封建时代
+;不行了
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 60);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 5);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 5);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 125)
+(wood-amount < 30)
+(housing-headroom == 0);无空房
+(current-age == feudal-age);封建时代
+;不行了
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 60);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 0);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 0);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount < 125)
+(wood-amount > 125)
+(housing-headroom > 0);有空房
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 65);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 25);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 5);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 5);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 125)
+(wood-amount < 125)
+(wood-amount > 30)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 40);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 5);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 5);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 125)
+(wood-amount < 30)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 10);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 90);采集工人
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 50);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 5);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 5);采集石头
+)
+
+#load-if-not-defined FORTRESS-MAP
+#load-if-not-defined ISLANDS-MAP
+#load-if-not-defined TEAM-ISLANDS-MAP
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 200)
+(wood-amount > 200)
+(gold-amount < 200)
+(stone-amount < 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 20);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 20);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 20);采集石头
+)
+
+#end-if
+#end-if
+#end-if
+
+#load-if-defined FORTRESS-MAP
+#load-if-defined ISLANDS-MAP
+#load-if-defined TEAM-ISLANDS-MAP
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 200)
+(wood-amount > 200)
+(gold-amount < 200)
+(stone-amount < 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 20);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 30);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+#end-if
+#end-if
+#end-if
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 200)
+(wood-amount > 200)
+(gold-amount > 200)
+(stone-amount > 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 55);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 15);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 15);采集石头
+)
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 200)
+(wood-amount < 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 40);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 15);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 400)
+(wood-amount > 200)
+(gold-amount > 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 60);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 20);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 600)
+(wood-amount > 200)
+(gold-amount > 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 65);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 15);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 700)
+(wood-amount > 200)
+(gold-amount > 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 85);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 5);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 5);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 5);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 500)
+(wood-amount > 200)
+(gold-amount < 200)
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 55);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 15);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 25);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 5);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 1000)
+(wood-amount > 1000)
+(gold-amount < 5000)
+(stone-amount > 1000)
+(current-age == feudal-age);封建时代
+;死斗
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 30);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 70);采集工人
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 70);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal upgrade no);没在升级
+(food-amount > 1000)
+(wood-amount > 1000)
+(gold-amount > 5000)
+(stone-amount > 1000)
+(current-age == feudal-age);封建时代
+;死斗
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 30);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 70);采集工人
+(set-strategic-number sn-food-gatherer-percentage 10);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 10);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 60);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 20);采集石头
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+以下代码为继承(1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defrule
+(goal upgrade age3);在升级城堡时代
+(current-age == feudal-age);封建时代
+(food-amount < 200)
+(wood-amount < 200)
+(gold-amount < 200)
+(stone-amount < 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal upgrade age3);在升级城堡时代
+(current-age == feudal-age);封建时代
+(food-amount > 200)
+(wood-amount < 200)
+(gold-amount < 200)
+(stone-amount < 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 35);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 45);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(goal upgrade age3);在升级城堡时代
+(current-age == feudal-age);封建时代
+(food-amount > 200)
+(wood-amount > 200)
+(gold-amount < 200)
+(stone-amount < 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 20);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 20);采集石头
+)
+
+(defrule
+(goal upgrade age3);在升级城堡时代
+(current-age == feudal-age);封建时代
+(food-amount > 200)
+(food-amount < 500)
+(wood-amount > 500)
+(gold-amount > 200)
+(stone-amount > 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 20);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 15);采集石头
+)
+
+(defrule
+(goal upgrade age3);在升级城堡时代
+(current-age == feudal-age);封建时代
+(food-amount > 500)
+(wood-amount > 200)
+(wood-amount < 500)
+(gold-amount > 200)
+(stone-amount > 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 25);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 35);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 20);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 20);采集石头
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+以下代码为继承(2)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defrule
+(current-age > feudal-age);城堡时代,帝王时代,后帝王时代
+(food-amount < 200)
+(wood-amount < 200)
+(gold-amount < 200)
+(stone-amount < 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(current-age > feudal-age);城堡时代,帝王时代,后帝王时代
+(food-amount > 200)
+(wood-amount < 200)
+(gold-amount < 200)
+(stone-amount < 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 35);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 45);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 10);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 10);采集石头
+)
+
+(defrule
+(current-age > feudal-age);城堡时代,帝王时代,后帝王时代
+(food-amount > 200)
+(wood-amount > 200)
+(gold-amount < 200)
+(stone-amount < 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 30);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 30);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 20);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 20);采集石头
+)
+
+(defrule
+(current-age > feudal-age);城堡时代,帝王时代,后帝王时代
+(food-amount > 200)
+(food-amount < 500)
+(wood-amount > 500)
+(gold-amount > 200)
+(stone-amount > 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 50);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 20);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 15);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 15);采集石头
+)
+
+(defrule
+(current-age > feudal-age);城堡时代,帝王时代,后帝王时代
+(food-amount > 500)
+(wood-amount > 200)
+(wood-amount < 500)
+(gold-amount > 200)
+(stone-amount > 200)
+=>
+(set-strategic-number sn-percent-civilian-explorers 0);探索工人
+(set-strategic-number sn-percent-civilian-builders 20);建筑工人
+(set-strategic-number sn-percent-civilian-gatherers 80);采集工人
+(set-strategic-number sn-food-gatherer-percentage 25);采集食物
+(set-strategic-number sn-wood-gatherer-percentage 35);采集木材
+(set-strategic-number sn-gold-gatherer-percentage 20);采集黄金
+(set-strategic-number sn-stone-gatherer-percentage 20);采集石头
+)

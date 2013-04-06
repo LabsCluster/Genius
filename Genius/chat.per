@@ -1,6 +1,6 @@
-;Geniusç»„ä»¶
+;Genius×é¼ş
 ;Genius.chat
-;è¯­éŸ³æŒ‡ä»¤å’Œäº¤è°ˆ
+;ÓïÒôÖ¸ÁîºÍ½»Ì¸
 
 
 (defrule
@@ -19,7 +19,7 @@
 (defrule
 (cheats-enabled)
 =>
-(chat-to-all "å¯ä»¥ä½œå¼Š!")
+(chat-to-all "¿ÉÒÔ×÷±×!")
 (disable-self)
 )
 
@@ -33,8 +33,8 @@
 (defrule
 (enemy-captured-relics)
 =>
-(chat-to-all "æ•Œå¯¹æ¸¸æˆè€…å¯»è·æ‰€æœ‰çš„é—è¿¹")
-(chat-to-all "æˆ˜ç•¥äººå·¥æ™ºèƒ½è‡ªåŠ¨ä»¥ä¿®é“é™¢åŠåƒ§ä¾£ä¸ºæ”»å‡»ç›®æ ‡")
+(chat-to-all "µĞ¶ÔÓÎÏ·ÕßÑ°»ñËùÓĞµÄÒÅ¼£")
+(chat-to-all "Õ½ÂÔÈË¹¤ÖÇÄÜ×Ô¶¯ÒÔĞŞµÀÔº¼°É®ÂÂÎª¹¥»÷Ä¿±ê")
 (disable-self)
 )
 
@@ -56,14 +56,14 @@
 (defrule
 (true)
 =>
-(chat-to-all "è¿™æ˜¯è¦å¡åœ°å›¾.")
+(chat-to-all "ÕâÊÇÒªÈûµØÍ¼.")
 (disable-self)
 )
 
 #end-if
 
 (defrule
-(building-type-count market > 0);æœ‰å¸‚åœº
+(building-type-count market > 0);ÓĞÊĞ³¡
 =>
 (chat-to-allies-using-id 22110)
 (disable-self)
@@ -73,88 +73,88 @@
 
 
 (defrule
-(taunt-detected any-ally 3);ç´¢è¦é£Ÿç‰©
-(food-amount > 250);é£Ÿç‰©é€‚é‡
+(taunt-detected any-ally 3);Ë÷ÒªÊ³Îï
+(food-amount > 250);Ê³ÎïÊÊÁ¿
 =>
 (release-escrow food)
 (tribute-to-player this-any-ally food 100)
-(chat-to-player this-any-ally "å¥½çš„,ç»™ä½ 100é£Ÿç‰©")
+(chat-to-player this-any-ally "ºÃµÄ,¸øÄã100Ê³Îï")
 (acknowledge-taunt this-any-ally 3)
 )
 
 (defrule
-(taunt-detected any-ally 3);ç´¢è¦é£Ÿç‰©
-(food-amount < 250);é£Ÿç‰©ä¸è¶³
+(taunt-detected any-ally 3);Ë÷ÒªÊ³Îï
+(food-amount < 250);Ê³Îï²»×ã
 =>
-(chat-to-player this-any-ally "å¯¹ä¸èµ·,æˆ‘ä¹Ÿæ²¡æœ‰è¿™ä¹ˆå¤šé£Ÿç‰©...")
+(chat-to-player this-any-ally "¶Ô²»Æğ,ÎÒÒ²Ã»ÓĞÕâÃ´¶àÊ³Îï...")
 (acknowledge-taunt this-any-ally 3)
 )
 
 (defrule
-(taunt-detected any-ally 4);ç´¢è¦æœ¨æ
-(wood-amount > 200);æœ¨æé€‚é‡
+(taunt-detected any-ally 4);Ë÷ÒªÄ¾²Ä
+(wood-amount > 200);Ä¾²ÄÊÊÁ¿
 =>
 (release-escrow wood)
 (tribute-to-player this-any-ally wood 100)
-(chat-to-player this-any-ally "å¥½çš„,ç»™ä½ 100æœ¨æ")
+(chat-to-player this-any-ally "ºÃµÄ,¸øÄã100Ä¾²Ä")
 (acknowledge-taunt this-any-ally 4)
 )
 
 (defrule
-(taunt-detected any-ally 4);ç´¢è¦æœ¨æ
-(wood-amount < 200);æœ¨æä¸è¶³
+(taunt-detected any-ally 4);Ë÷ÒªÄ¾²Ä
+(wood-amount < 200);Ä¾²Ä²»×ã
 =>
-(chat-to-player this-any-ally "å¯¹ä¸èµ·,æˆ‘ä¹Ÿæ²¡æœ‰è¿™ä¹ˆå¤šæœ¨æ...")
+(chat-to-player this-any-ally "¶Ô²»Æğ,ÎÒÒ²Ã»ÓĞÕâÃ´¶àÄ¾²Ä...")
 (acknowledge-taunt this-any-ally 4)
 )
 
 (defrule
-(taunt-detected any-ally 5);ç´¢è¦é»„é‡‘
-(gold-amount > 150);é»„é‡‘é€‚é‡
+(taunt-detected any-ally 5);Ë÷Òª»Æ½ğ
+(gold-amount > 150);»Æ½ğÊÊÁ¿
 =>
 (release-escrow gold)
 (tribute-to-player this-any-ally gold 100)
-(chat-to-player this-any-ally "å¥½çš„,ç»™ä½ 100é»„é‡‘")
+(chat-to-player this-any-ally "ºÃµÄ,¸øÄã100»Æ½ğ")
 (acknowledge-taunt this-any-ally 5)
 )
 
 (defrule
-(taunt-detected any-ally 5);ç´¢è¦é»„é‡‘
-(gold-amount < 150);é»„é‡‘ä¸è¶³
+(taunt-detected any-ally 5);Ë÷Òª»Æ½ğ
+(gold-amount < 150);»Æ½ğ²»×ã
 =>
-(chat-to-player this-any-ally "å¯¹ä¸èµ·,æˆ‘ä¹Ÿæ²¡æœ‰è¿™ä¹ˆå¤šé»„é‡‘...")
+(chat-to-player this-any-ally "¶Ô²»Æğ,ÎÒÒ²Ã»ÓĞÕâÃ´¶à»Æ½ğ...")
 (acknowledge-taunt this-any-ally 5)
 )
 
 (defrule
-(taunt-detected any-ally 6);ç´¢è¦çŸ³å¤´
-(stone-amount > 100);çŸ³å¤´é€‚é‡
+(taunt-detected any-ally 6);Ë÷ÒªÊ¯Í·
+(stone-amount > 100);Ê¯Í·ÊÊÁ¿
 =>
 (release-escrow stone)
 (tribute-to-player this-any-ally stone 100)
-(chat-to-player this-any-ally "å¥½çš„,ç»™ä½ 100çŸ³å¤´")
+(chat-to-player this-any-ally "ºÃµÄ,¸øÄã100Ê¯Í·")
 (acknowledge-taunt this-any-ally 6)
 )
 
 (defrule
-(taunt-detected any-ally 6);ç´¢è¦çŸ³å¤´
-(stone-amount < 100);çŸ³å¤´ä¸è¶³
+(taunt-detected any-ally 6);Ë÷ÒªÊ¯Í·
+(stone-amount < 100);Ê¯Í·²»×ã
 =>
-(chat-to-player this-any-ally "å¯¹ä¸èµ·,æˆ‘ä¹Ÿæ²¡æœ‰è¿™ä¹ˆå¤šçŸ³å¤´...")
+(chat-to-player this-any-ally "¶Ô²»Æğ,ÎÒÒ²Ã»ÓĞÕâÃ´¶àÊ¯Í·...")
 (acknowledge-taunt this-any-ally 6)
 )
 
 (defrule
-(taunt-detected any-ally 31);è¢«è¦æ±‚è¿›æ”»æ•Œäºº
-(current-age == dark-age);é»‘æš—æ—¶ä»£
+(taunt-detected any-ally 31);±»ÒªÇó½ø¹¥µĞÈË
+(current-age == dark-age);ºÚ°µÊ±´ú
 =>
 (chat-to-player-using-id this-any-ally 22165)
 (acknowledge-taunt this-any-ally 31)
 )
 
 (defrule
-(taunt-detected any-ally 31);è¢«è¦æ±‚è¿›æ”»æ•Œäºº
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
+(taunt-detected any-ally 31);±»ÒªÇó½ø¹¥µĞÈË
+(current-age == imperial-age);µÛÍõÊ±´ú
 =>
 (chat-to-player-using-id this-any-ally 07140)
 (set-goal attackstat 4)
@@ -162,32 +162,32 @@
 )
 
 (defrule
-(taunt-detected any-ally 42);è¯¢é—®æ—¶ä»£
-(current-age == dark-age);é»‘æš—æ—¶ä»£
+(taunt-detected any-ally 42);Ñ¯ÎÊÊ±´ú
+(current-age == dark-age);ºÚ°µÊ±´ú
 =>
 (chat-to-player-using-id this-any-ally 22165)
 (acknowledge-taunt this-any-ally 42)
 )
 
 (defrule
-(taunt-detected any-ally 42);è¯¢é—®æ—¶ä»£
-(current-age == feudal-age);å°å»ºæ—¶ä»£
+(taunt-detected any-ally 42);Ñ¯ÎÊÊ±´ú
+(current-age == feudal-age);·â½¨Ê±´ú
 =>
 (chat-to-player-using-id this-any-ally 22166)
 (acknowledge-taunt this-any-ally 42)
 )
 
 (defrule
-(taunt-detected any-ally 42);è¯¢é—®æ—¶ä»£
-(current-age == castle-age);åŸå ¡æ—¶ä»£
+(taunt-detected any-ally 42);Ñ¯ÎÊÊ±´ú
+(current-age == castle-age);³Ç±¤Ê±´ú
 =>
 (chat-to-player-using-id this-any-ally 22167)
 (acknowledge-taunt this-any-ally 42)
 )
 
 (defrule
-(taunt-detected any-ally 42);è¯¢é—®æ—¶ä»£
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
+(taunt-detected any-ally 42);Ñ¯ÎÊÊ±´ú
+(current-age == imperial-age);µÛÍõÊ±´ú
 =>
 (chat-to-player-using-id this-any-ally 22168)
 (acknowledge-taunt this-any-ally 42)

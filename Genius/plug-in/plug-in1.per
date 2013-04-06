@@ -1,0 +1,11 @@
+;Genius 用户拓展脚本
+;plug-in:plug-in1
+;用户拓展脚本1
+
+(defrule
+(game-time > 3)
+=>
+(chat-local "Plug-in1正常.")
+)
+
+;您可以在下方根据我们的API书写拓展脚本,也可以用下载的兼容脚本覆盖该文件.如果您想进行调试,请使用debug.per

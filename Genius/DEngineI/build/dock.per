@@ -1,0 +1,123 @@
+;Genius 组件 :DEngineI 引擎
+;DEngineI:buile:dock
+;建造码头
+
+#load-if-defined MEDITERRANEAN-MAP
+#load-if-defined BALTIC-MAP
+#load-if-defined CONTINENTAL-MAP
+#load-if-defined ISLANDS-MAP 
+#load-if-defined TEAM-ISLANDS-MAP
+#load-if-defined RIVERS-MAP
+#load-if-defined MEDITERRANEAN-MAP
+
+(defrule
+(building-type-count-total mining-camp > 1);矿场大于1
+(building-type-count-total dock == 0);码头为0
+(can-build dock)
+=>
+(build dock)
+(chat-to-allies "建造码头")
+)
+
+(defrule
+(goal mts 20)
+(building-type-count-total dock == 0);码头为0
+(wood-amount >= 175)
+=>
+(set-strategic-number sn-maximum-town-size 30);最大城镇规模
+(set-goal mts 30)
+)
+
+(defrule
+(goal mts 30)
+(building-type-count-total dock == 0);码头为0
+(wood-amount >= 175)
+=>
+(set-strategic-number sn-maximum-town-size 40);最大城镇规模
+(set-goal mts 40)
+)
+
+(defrule
+(goal mts 40)
+(building-type-count-total dock == 0);码头为0
+(wood-amount >= 175)
+=>
+(set-strategic-number sn-maximum-town-size 50);最大城镇规模
+(set-goal mts 50)
+)
+
+(defrule
+(goal mts 50)
+(building-type-count-total dock == 0);码头为0
+(wood-amount >= 175)
+=>
+(set-strategic-number sn-maximum-town-size 60);最大城镇规模
+(set-goal mts 60)
+)
+
+(defrule
+(goal mts 60)
+(building-type-count-total dock == 0);码头为0
+(wood-amount >= 175)
+=>
+(set-strategic-number sn-maximum-town-size 70);最大城镇规模
+(set-goal mts 70)
+)
+
+(defrule
+(goal mts 70)
+(building-type-count-total dock == 0);码头为0
+(wood-amount >= 175)
+=>
+(set-strategic-number sn-maximum-town-size 80);最大城镇规模
+(set-goal mts 80)
+)
+
+(defrule
+(goal mts 80)
+(building-type-count-total dock == 0);码头为0
+(wood-amount >= 175)
+=>
+(set-strategic-number sn-maximum-town-size 90);最大城镇规模
+(set-goal mts 90)
+)
+
+(defrule
+(building-type-count-total dock > 0);有码头
+(current-age == dark-age);黑暗时代
+=>
+(set-strategic-number sn-maximum-town-size 20);最大城镇规模
+(set-goal mts 20)
+)
+
+(defrule
+(building-type-count-total dock > 0);有码头
+(current-age == feudal-age);封建时代
+=>
+(set-strategic-number sn-maximum-town-size 30);最大城镇规模
+(set-goal mts 30)
+)
+
+(defrule
+(building-type-count-total dock > 0);有码头
+(current-age == castle-age);城堡时代
+=>
+(set-strategic-number sn-maximum-town-size 35);最大城镇规模
+(set-goal mts 35)
+)
+
+(defrule
+(building-type-count-total dock > 0);有码头
+(current-age == imperial-age);帝王时代
+=>
+(set-strategic-number sn-maximum-town-size 45);最大城镇规模
+(set-goal mts 45)
+)
+
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if
+#end-if

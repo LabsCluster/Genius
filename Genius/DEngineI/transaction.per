@@ -1,0 +1,108 @@
+;Genius 组件
+;transaction
+;市场交易
+
+(defrule
+(food-amount > 1200);食物过多
+(gold-amount < 500);黄金过少
+(building-type-count market > 0);有市场
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "食物过多,卖出100食物")
+(sell-commodity food);卖出100食物
+)
+
+(defrule
+(food-amount > 1500);食物过多
+(building-type-count market > 0);有市场
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "食物过多,卖出100食物")
+(sell-commodity food);卖出100食物
+)
+
+(defrule
+(food-amount < 50);食物过少
+(building-type-count market > 0);有市场
+(current-age == castle-age);城堡时代
+(commodity-buying-price food < 45);食物低价
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "食物过少,低价买进100食物")
+(buy-commodity food);买进100食物
+)
+
+(defrule
+(food-amount < 100);食物过少
+(building-type-count market > 0);有市场
+(current-age == imperial-age);帝王时代
+(commodity-buying-price food < 55);食物低价
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "食物过少,低价买进100食物")
+(buy-commodity food);买进100食物
+)
+
+(defrule
+(wood-amount > 800);木材过多
+(building-type-count market > 0);有市场
+(current-age == castle-age);城堡时代
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "木材过多,卖出100木材")
+(sell-commodity wood);卖出100木材
+)
+
+(defrule
+(wood-amount > 800);木材过多
+(building-type-count market > 0);有市场
+(current-age == imperial-age);帝王时代
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "木材过多,卖出100木材")
+(sell-commodity wood);卖出100木材
+)
+
+(defrule
+(stone-amount < 50);石料过少
+(current-age >= castle-age);至少城堡时代
+(building-type-count market > 0);有市场
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "石料过少,买进100石料")
+(buy-commodity stone);买进100石料
+)
+
+(defrule
+(stone-amount > 750);石料过多
+(current-age >= castle-age);至少城堡时代
+(building-type-count market > 0);有市场
+(commodity-selling-price stone > 150);石料高价
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "石料过多,高价卖出100石料")
+(sell-commodity stone);卖出100石料
+)
+
+(defrule
+(stone-amount > 850);石料过多
+(current-age >= imperial-age);至少帝王时代
+(building-type-count market > 0);有市场
+(commodity-selling-price stone > 145);石料高价
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "石料过多,高价卖出100石料")
+(sell-commodity stone);卖出100石料
+)
+
+(defrule
+(wood-amount > 600);石料过多
+(current-age == castle-age);城堡时代
+(building-type-count market > 0);有市场
+(commodity-selling-price wood > 50);木材高价
+(gold-amount < 600);黄金过少
+(goal cheatstat 0);没有作弊
+=>
+(chat-to-all "木材过多,高价卖出100木材")
+(sell-commodity wood);卖出100木材
+)

@@ -1,0 +1,53 @@
+;Genius 组件 :DEngine 引擎
+;DEngineI:DEngineI
+;DEngineI引擎主文件
+;DEngine 引擎版本:1.0.A
+
+;训练模块
+(load "Genius\DEngineI\train\scout-cavalry-line")
+(load "Genius\DEngineI\train\fishing-ship")
+(load "Genius\DEngineI\train\trade-cart")
+(load "Genius\DEngineI\train\villager")
+(load "Genius\DEngineI\train\spearman-line")
+(load "Genius\DEngineI\train\skirmisher-line")
+(load "Genius\DEngineI\train\castle-train")
+
+;建造模块(由Genius.SmartEngine.smartengine代替)
+;(load "Genius\DEngineI\build\stable")
+;(load "Genius\DEngineI\build\lumber-camp")
+;(load "Genius\DEngineI\build\house")
+;(load "Genius\DEngineI\build\dock")
+;(load "Genius\DEngineI\build\farm")
+;(load "Genius\DEngineI\build\mill")
+;(load "Genius\DEngineI\build\market")
+;(load "Genius\DEngineI\build\university")
+;(load "Genius\DEngineI\build\mining-camp")
+;(load "Genius\DEngineI\build\barracks")
+;(load "Genius\DEngineI\build\archery-range")
+
+
+;研究模块
+(load "Genius\DEngineI\research")
+
+;设定常量
+(load "Genius\DEngineI\set-goal")
+
+;智能交易
+(load "Genius\DEngineI\transaction")
+
+;劳动部署
+#load-if-defined DIFFICULTY-MODERATE
+(load "Genius\DEngineI\production-deployment")
+#else
+(load "Genius\DEngineI\production-deployment2")
+#end-if
+
+;初始化计时器
+(load "Genius\DEngineI\enable-timer")
+
+(defrule
+(game-time > 3)
+=>
+(chat-local "Genius DEngineI 正常")
+(disable-self)
+)

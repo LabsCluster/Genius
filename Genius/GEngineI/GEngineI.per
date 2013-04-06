@@ -1,0 +1,13 @@
+;Genius 组件 :GEngine 引擎
+;GEngineI:GEngineI
+;GEngineI引擎主文件
+;灵感来自 Goat 1.0 Beta
+
+(load "Genius\GEngineI\production-deployment")
+
+(defrule
+(game-time > 3)
+=>
+(chat-local "Genius GEngineI 正常")
+(disable-self)
+)

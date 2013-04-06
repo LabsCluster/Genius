@@ -1,35 +1,35 @@
-;Genius 2013 Beta 0.1 (å†…éƒ¨ç‰ˆæœ¬å·1.3.3.1)
+;Genius 2013 Beta 0.1 (ÄÚ²¿°æ±¾ºÅ1.3.3.2)
 ;Written By DGideas.
 ;QQ:547339086
 ;Copyright (C) DGideas 2012-2013
-;;;;;;;;;;é…ç½®é™åˆ¶;;;;;;;;;;
-;é™åˆ¶:é™†æˆ˜ç§æ—ä¸é™(AOFEé™¤å¤–).
-;æ¨èè¿è¡Œäº1.0 Cç‰ˆæœ¬.
-;;;;;;;;;;ç¨‹åºç‰¹è‰²;;;;;;;;;;
-;è‡ªé€‰ä½œå¼Š,è°ƒæ•´ä½œå¼Šçº§åˆ«
-;;;;;;;;;;è£èª‰å¢™;;;;;;;;;;
-;è¿˜ç©ºç€.
+;;;;;;;;;;ÅäÖÃÏŞÖÆ;;;;;;;;;;
+;ÏŞÖÆ:Â½Õ½ÖÖ×å²»ÏŞ(AOFE³ıÍâ).
+;ÍÆ¼öÔËĞĞÓÚ1.0 C°æ±¾.
+;;;;;;;;;;³ÌĞòÌØÉ«;;;;;;;;;;
+;×ÔÑ¡×÷±×,µ÷Õû×÷±×¼¶±ğ
+;;;;;;;;;;ÈÙÓşÇ½;;;;;;;;;;
+;»¹¿Õ×Å.
 
 #load-if-not-defined DEATH-MATCH
-;ä¸æ˜¯å†³æ–—æ¨¡å¼
+;²»ÊÇ¾ö¶·Ä£Ê½
 
-;è®¾å®šå¸¸é‡(æ™®é€šç±»)
+;Éè¶¨³£Á¿(ÆÕÍ¨Àà)
 (load "Genius\defconst\normal")
 
 
-;è®¾å®šgoalç±»ç›®æ ‡ç¼–å·
+;Éè¶¨goalÀàÄ¿±ê±àºÅ
 (load "Genius\defconst\goal")
 
-;å‰§æƒ…æ¨¡å¼æ£€æµ‹
+;¾çÇéÄ£Ê½¼ì²â
 (load "Genius\DEngineI\DEngineI")
 
-;DEngineIå¼•æ“
+;DEngineIÒıÇæ
 (load "Genius\debug")
-;æµ‹è¯•æ¨¡å—
+;²âÊÔÄ£¿é
 
-(load "Genius\cheat\main");åŠ è½½ä½œå¼Šæ¨¡å—
+(load "Genius\cheat\main");¼ÓÔØ×÷±×Ä£¿é
 
-;å¤„ç†ç³»ç»Ÿå®šä¹‰ç¬¦å·,åˆ¤æ–­æ¡ä»¶
+;´¦ÀíÏµÍ³¶¨Òå·ûºÅ,ÅĞ¶ÏÌõ¼ş
 #load-if-defined DIFFICULTY-HARDEST
 (defrule
 (true)
@@ -61,235 +61,235 @@
 
 (load "Genius\scan\run-scan")
 
-;ç­–ç•¥è®¾å®š
+;²ßÂÔÉè¶¨
 
 (load "Genius\ssn")
 
 
 ;(load "Genius\GEngineI\GEngineI")
 
-;èµ„æºçŠ¶å†µè‡ªåŠ¨æ£€æµ‹(æµ‹è¯•v2)
+;×ÊÔ´×´¿ö×Ô¶¯¼ì²â(²âÊÔv2)
 
 (load "Genius\scan\need")
 
 
-;å‡çº§å®Œæˆçš„åŠ¨ä½œ
+;Éı¼¶Íê³ÉµÄ¶¯×÷
 
 (defrule
-(current-age == feudal-age);å°å»ºæ—¶ä»£
+(current-age == feudal-age);·â½¨Ê±´ú
 =>
-(chat-to-all "å·²å‡çº§è‡³å°å»ºæ—¶ä»£")
-(set-goal upgrade no);æ²¡æœ‰å‡çº§
-(set-strategic-number sn-blot-exploration-map 1);å†æ¢ç´¢åœ°å›¾
+(chat-to-all "ÒÑÉı¼¶ÖÁ·â½¨Ê±´ú")
+(set-goal upgrade no);Ã»ÓĞÉı¼¶
+(set-strategic-number sn-blot-exploration-map 1);ÔÙÌ½Ë÷µØÍ¼
 (disable-self)
 )
 
 (defrule
-(current-age == castle-age);åŸå ¡æ—¶ä»£
+(current-age == castle-age);³Ç±¤Ê±´ú
 =>
-(chat-to-all "å·²å‡çº§è‡³åŸå ¡æ—¶ä»£")
-(set-goal upgrade no);æ²¡æœ‰å‡çº§
-(chat-to-allies "å–æ¶ˆäº†æ¢ç´¢å•ä½")
-(set-strategic-number sn-number-explore-groups 0);å–æ¶ˆæ¢ç´¢å•ä½
-(chat-to-allies "ä¸€ä¸ªä¼æœ¨åœº")
-(build lumber-camp);å»ºé€ ä¼æœ¨åœº
+(chat-to-all "ÒÑÉı¼¶ÖÁ³Ç±¤Ê±´ú")
+(set-goal upgrade no);Ã»ÓĞÉı¼¶
+(chat-to-allies "È¡ÏûÁËÌ½Ë÷µ¥Î»")
+(set-strategic-number sn-number-explore-groups 0);È¡ÏûÌ½Ë÷µ¥Î»
+(chat-to-allies "Ò»¸ö·¥Ä¾³¡")
+(build lumber-camp);½¨Ôì·¥Ä¾³¡
 (disable-self)
 )
 
 (defrule
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
+(current-age == imperial-age);µÛÍõÊ±´ú
 =>
-(chat-to-all "å·²å‡çº§è‡³å¸ç‹æ—¶ä»£")
-(set-goal upgrade no);æ²¡æœ‰å‡çº§
-(chat-to-allies "ä¸€ä¸ªé‡‡çŸ¿åœº")
+(chat-to-all "ÒÑÉı¼¶ÖÁµÛÍõÊ±´ú")
+(set-goal upgrade no);Ã»ÓĞÉı¼¶
+(chat-to-allies "Ò»¸ö²É¿ó³¡")
 (build mining-camp)
 (disable-self)
 )
 
 
-;æ¸¸æˆå¼€å§‹
+;ÓÎÏ·¿ªÊ¼
 (load "Genius\start")
 
 (load "Genius\SmartEngine\smartengine")
 
-;é€šç”¨è„šæœ¬
+;Í¨ÓÃ½Å±¾
 
 (defrule
-(unit-type-count-total militiaman-line < 3);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(can-train militiaman-line);èƒ½ç”Ÿäº§æ­¥å…µ
-(civilian-population >= age1villagernum);äººæ•°è¾¾æ ‡,é˜²æ­¢è¦å¡åœ°å›¾ä¸€å¼€å§‹å°±ç”Ÿå…µ
+(unit-type-count-total militiaman-line < 3);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(can-train militiaman-line);ÄÜÉú²ú²½±ø
+(civilian-population >= age1villagernum);ÈËÊı´ï±ê,·ÀÖ¹ÒªÈûµØÍ¼Ò»¿ªÊ¼¾ÍÉú±ø
 =>
-(chat-to-allies "ä¸€ä¸ªæ­¥å…µ")
-(train militiaman-line);ä¸€ä¸ªæ­¥å…µ
+(chat-to-allies "Ò»¸ö²½±ø")
+(train militiaman-line);Ò»¸ö²½±ø
 )
 
 (defrule
-(unit-type-count-total skirmisher-line < 3);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(can-train skirmisher-line);èƒ½ç”Ÿäº§çŸ›å…µ
-(civilian-population >= age1villagernum);äººæ•°è¾¾æ ‡,é˜²æ­¢è¦å¡åœ°å›¾ä¸€å¼€å§‹å°±ç”Ÿå…µ
+(unit-type-count-total skirmisher-line < 3);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(can-train skirmisher-line);ÄÜÉú²úÃ¬±ø
+(civilian-population >= age1villagernum);ÈËÊı´ï±ê,·ÀÖ¹ÒªÈûµØÍ¼Ò»¿ªÊ¼¾ÍÉú±ø
 =>
-(chat-to-allies "ä¸€ä¸ªçŸ›å…µ")
-(train skirmisher-line);ä¸€ä¸ªçŸ›å…µ
+(chat-to-allies "Ò»¸öÃ¬±ø")
+(train skirmisher-line);Ò»¸öÃ¬±ø
 )
 
 (defrule
-(unit-type-count-total skirmisher-line < 6);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(can-train skirmisher-line);èƒ½ç”Ÿäº§çŸ›å…µ
-(current-age == castle-age);åŸå ¡æ—¶ä»£
+(unit-type-count-total skirmisher-line < 6);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(can-train skirmisher-line);ÄÜÉú²úÃ¬±ø
+(current-age == castle-age);³Ç±¤Ê±´ú
 =>
-(chat-to-allies "ä¸€ä¸ªçŸ›å…µ")
-(train skirmisher-line);ä¸€ä¸ªçŸ›å…µ
+(chat-to-allies "Ò»¸öÃ¬±ø")
+(train skirmisher-line);Ò»¸öÃ¬±ø
 )
 
 (defrule
-(unit-type-count-total monk < 3);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == castle-age);åŸå ¡æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
-(gold-amount > 200);é»„é‡‘å……è¶³
-(can-train monk);èƒ½ç”Ÿäº§åƒ§ä¾£
+(unit-type-count-total monk < 3);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == castle-age);³Ç±¤Ê±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
+(gold-amount > 200);»Æ½ğ³ä×ã
+(can-train monk);ÄÜÉú²úÉ®ÂÂ
 =>
-(chat-to-allies "ä¸€ä¸ªåƒ§ä¾£")
-(train monk);ä¸€ä¸ªåƒ§ä¾£
+(chat-to-allies "Ò»¸öÉ®ÂÂ")
+(train monk);Ò»¸öÉ®ÂÂ
 )
 
 (defrule
-(unit-type-count-total monk < 8);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
-(gold-amount > 200);é»„é‡‘å……è¶³
-(can-train monk);èƒ½ç”Ÿäº§åƒ§ä¾£
+(unit-type-count-total monk < 8);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == imperial-age);µÛÍõÊ±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
+(gold-amount > 200);»Æ½ğ³ä×ã
+(can-train monk);ÄÜÉú²úÉ®ÂÂ
 =>
-(chat-to-allies "ä¸€ä¸ªåƒ§ä¾£")
-(train monk);ä¸€ä¸ªåƒ§ä¾£
+(chat-to-allies "Ò»¸öÉ®ÂÂ")
+(train monk);Ò»¸öÉ®ÂÂ
 )
 
 #load-if-defined DIFFICULTY-HARDEST
 (defrule
-(unit-type-count-total monk < 15);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
-(gold-amount > 200);é»„é‡‘å……è¶³
-(can-train monk);èƒ½ç”Ÿäº§åƒ§ä¾£
+(unit-type-count-total monk < 15);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == imperial-age);µÛÍõÊ±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
+(gold-amount > 200);»Æ½ğ³ä×ã
+(can-train monk);ÄÜÉú²úÉ®ÂÂ
 =>
-(chat-to-allies "ä¸€ä¸ªåƒ§ä¾£")
-(train monk);ä¸€ä¸ªåƒ§ä¾£
+(chat-to-allies "Ò»¸öÉ®ÂÂ")
+(train monk);Ò»¸öÉ®ÂÂ
 )
 
 #end-if
 
 #load-if-defined AZTEC-CIV
 (defrule
-(unit-type-count-total monk < 10);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == castle-age);åŸå ¡æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
-(gold-amount > 200);é»„é‡‘å……è¶³
-(can-train monk);èƒ½ç”Ÿäº§åƒ§ä¾£
+(unit-type-count-total monk < 10);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == castle-age);³Ç±¤Ê±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
+(gold-amount > 200);»Æ½ğ³ä×ã
+(can-train monk);ÄÜÉú²úÉ®ÂÂ
 =>
-(chat-to-allies "ä¸€ä¸ªåƒ§ä¾£")
-(train monk);ä¸€ä¸ªåƒ§ä¾£
+(chat-to-allies "Ò»¸öÉ®ÂÂ")
+(train monk);Ò»¸öÉ®ÂÂ
 )
 
 #end-if
 
 #load-if-defined AZTEC-CIV
 (defrule
-(unit-type-count-total monk < 15);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
-(gold-amount > 200);é»„é‡‘å……è¶³
-(can-train monk);èƒ½ç”Ÿäº§åƒ§ä¾£
+(unit-type-count-total monk < 15);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == imperial-age);µÛÍõÊ±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
+(gold-amount > 200);»Æ½ğ³ä×ã
+(can-train monk);ÄÜÉú²úÉ®ÂÂ
 =>
-(chat-to-allies "ä¸€ä¸ªåƒ§ä¾£")
-(train monk);ä¸€ä¸ªåƒ§ä¾£
+(chat-to-allies "Ò»¸öÉ®ÂÂ")
+(train monk);Ò»¸öÉ®ÂÂ
 )
 
 #end-if
 
 #load-if-defined DIFFICULTY
 (defrule
-(unit-type-count-total monk < 10);æœªè¾¾äººæ•°é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
-(gold-amount > 200);é»„é‡‘å……è¶³
-(can-train monk);èƒ½ç”Ÿäº§åƒ§ä¾£
+(unit-type-count-total monk < 10);Î´´ïÈËÊıÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == imperial-age);µÛÍõÊ±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
+(gold-amount > 200);»Æ½ğ³ä×ã
+(can-train monk);ÄÜÉú²úÉ®ÂÂ
 =>
-(chat-to-allies "ä¸€ä¸ªåƒ§ä¾£")
-(train monk);ä¸€ä¸ªåƒ§ä¾£
+(chat-to-allies "Ò»¸öÉ®ÂÂ")
+(train monk);Ò»¸öÉ®ÂÂ
 )
 
 #end-if
 
 (defrule
-(unit-type-count-total battering-ram < 2);æœªè¾¾æ•°é‡é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == castle-age);åŸå ¡æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(can-train battering-ram);èƒ½ç”Ÿäº§è½»å‹æ”»åŸè½¦
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
+(unit-type-count-total battering-ram < 2);Î´´ïÊıÁ¿ÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == castle-age);³Ç±¤Ê±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(can-train battering-ram);ÄÜÉú²úÇáĞÍ¹¥³Ç³µ
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
 =>
-(chat-to-allies "ä¸€ä¸ªè½»å‹æ”»åŸè½¦")
-(train battering-ram);ä¸€ä¸ªè½»å‹æ”»åŸè½¦
+(chat-to-allies "Ò»¸öÇáĞÍ¹¥³Ç³µ")
+(train battering-ram);Ò»¸öÇáĞÍ¹¥³Ç³µ
 )
 
 (defrule
-(unit-type-count-total battering-ram < 3);æœªè¾¾æ•°é‡é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(can-train battering-ram);èƒ½ç”Ÿäº§è½»å‹æ”»åŸè½¦
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
+(unit-type-count-total battering-ram < 3);Î´´ïÊıÁ¿ÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == imperial-age);µÛÍõÊ±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(can-train battering-ram);ÄÜÉú²úÇáĞÍ¹¥³Ç³µ
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
 =>
-(chat-to-allies "ä¸€ä¸ªè½»å‹æ”»åŸè½¦")
-(train battering-ram);ä¸€ä¸ªè½»å‹æ”»åŸè½¦
+(chat-to-allies "Ò»¸öÇáĞÍ¹¥³Ç³µ")
+(train battering-ram);Ò»¸öÇáĞÍ¹¥³Ç³µ
 )
 
 (defrule
-(unit-type-count-total mangonel < 1);æœªè¾¾æ•°é‡é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == castle-age);åŸå ¡æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(can-train mangonel);èƒ½ç”Ÿäº§æŠ•çŸ³è½¦
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
+(unit-type-count-total mangonel < 1);Î´´ïÊıÁ¿ÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == castle-age);³Ç±¤Ê±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(can-train mangonel);ÄÜÉú²úÍ¶Ê¯³µ
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
 =>
-(chat-to-allies "ä¸€ä¸ªæŠ•çŸ³è½¦")
-(train mangonel);ä¸€ä¸ªæŠ•çŸ³è½¦
+(chat-to-allies "Ò»¸öÍ¶Ê¯³µ")
+(train mangonel);Ò»¸öÍ¶Ê¯³µ
 )
 
 (defrule
-(unit-type-count-total mangonel < 3);æœªè¾¾æ•°é‡é™åˆ¶
-(housing-headroom > 0 );æœ‰ä½æˆ¿
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
-(can-train mangonel);èƒ½ç”Ÿäº§æŠ•çŸ³è½¦
-(building-type-count-total town-center > 0);å½“å­˜åœ¨åŸé•‡ä¸­å¿ƒ:é˜²æ­¢åŸé•‡ä¸­å¿ƒè¢«æ¯åå»ºé€ å¤±æ§
+(unit-type-count-total mangonel < 3);Î´´ïÊıÁ¿ÏŞÖÆ
+(housing-headroom > 0 );ÓĞ×¡·¿
+(current-age == imperial-age);µÛÍõÊ±´ú
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
+(can-train mangonel);ÄÜÉú²úÍ¶Ê¯³µ
+(building-type-count-total town-center > 0);µ±´æÔÚ³ÇÕòÖĞĞÄ:·ÀÖ¹³ÇÕòÖĞĞÄ±»»Ùºó½¨ÔìÊ§¿Ø
 =>
-(chat-to-allies "ä¸€ä¸ªæŠ•çŸ³è½¦")
-(train mangonel);ä¸€ä¸ªæŠ•çŸ³è½¦
+(chat-to-allies "Ò»¸öÍ¶Ê¯³µ")
+(train mangonel);Ò»¸öÍ¶Ê¯³µ
 )
 
 
-;è‡ªæˆ‘é˜²å«
+;×ÔÎÒ·ÀÎÀ
 
 (defrule
-(current-age == dark-age);é»‘æš—æ—¶ä»£
-(town-under-attack);åŸé•‡å—åˆ°æ”»å‡»
+(current-age == dark-age);ºÚ°µÊ±´ú
+(town-under-attack);³ÇÕòÊÜµ½¹¥»÷
 =>
-(chat-to-all "RUSH?è¿™å¯ä¸è¡Œ,ä½ ç­‰æ­»å§!!!")
+(chat-to-all "RUSH?Õâ¿É²»ĞĞ,ÄãµÈËÀ°É!!!")
 (cc-add-resource food 350)
 (cc-add-resource wood 350)
 (cc-add-resource gold 350)
@@ -299,10 +299,10 @@
 )
 
 (defrule
-(current-age == feudal-age);å°å»ºæ—¶ä»£
-(town-under-attack);åŸé•‡å—åˆ°æ”»å‡»
+(current-age == feudal-age);·â½¨Ê±´ú
+(town-under-attack);³ÇÕòÊÜµ½¹¥»÷
 =>
-(chat-to-all "å‘µå‘µ,ä½ æ­»å®šäº†")
+(chat-to-all "ºÇºÇ,ÄãËÀ¶¨ÁË")
 (cc-add-resource food 200)
 (cc-add-resource wood 200)
 (cc-add-resource gold 200)
@@ -312,49 +312,49 @@
 )
 
 (defrule
-(current-age == castle-age);åŸå ¡æ—¶ä»£
-(town-under-attack);åŸé•‡å—åˆ°æ”»å‡»
+(current-age == castle-age);³Ç±¤Ê±´ú
+(town-under-attack);³ÇÕòÊÜµ½¹¥»÷
 =>
-(chat-to-all "æ‰¾æ­»!!!")
+(chat-to-all "ÕÒËÀ!!!")
 (set-goal rushyet yes)
 (disable-self)
 )
 
 (defrule
-(current-age == imperial-age);å¸ç‹æ—¶ä»£
-(town-under-attack);åŸé•‡å—åˆ°æ”»å‡»
+(current-age == imperial-age);µÛÍõÊ±´ú
+(town-under-attack);³ÇÕòÊÜµ½¹¥»÷
 =>
-(chat-to-all "æ‰¾æ­»!!!")
+(chat-to-all "ÕÒËÀ!!!")
 (set-goal rushyet yes)
 (disable-self)
 )
 
 
-;åˆ¤æ–­è¿›æ”»æ¡ä»¶
+;ÅĞ¶Ï½ø¹¥Ìõ¼ş
 
 (defrule
 (military-population >= armynum)
-(not (town-under-attack));åŸé•‡æ²¡æœ‰æ”¶åˆ°æ”»å‡»
+(not (town-under-attack));³ÇÕòÃ»ÓĞÊÕµ½¹¥»÷
 =>
 (set-goal attackstat 2)
 )
 
 (defrule
 (military-population < armynum)
-(goal attackstat 2);æ”»å‡»è¿‡,è¢«å‡»é€€äº†
+(goal attackstat 2);¹¥»÷¹ı,±»»÷ÍËÁË
 =>
 (set-goal attackstat 3)
 )
 
 (defrule
 (military-population < 5)
-(goal attackstat 4);æ”»å‡»è¿‡,è¢«å‡»é€€äº†
+(goal attackstat 4);¹¥»÷¹ı,±»»÷ÍËÁË
 =>
 (set-goal attackstat 3)
 )
 
 
-;è¿›æ”»
+;½ø¹¥
 
 (defrule
 (goal attackstat 2)
@@ -375,8 +375,8 @@
 (defrule
 (goal attackstat 2)
 =>
-(chat-to-all "SMTSæ”»å‡»,å†²å•Š!!!")
-(set-strategic-number sn-maximum-town-size 100);æµ‹è¯•æ•°å€¼
+(chat-to-all "SMTS¹¥»÷,³å°¡!!!")
+(set-strategic-number sn-maximum-town-size 100);²âÊÔÊıÖµ
 (attack-now)
 (set-goal attackyet yes)
 )
@@ -384,8 +384,8 @@
 (defrule
 (goal attackstat 4)
 =>
-(chat-to-all "SMTSæ”»å‡»,å†²å•Š!!!")
-(set-strategic-number sn-maximum-town-size 100);æµ‹è¯•æ•°å€¼
+(chat-to-all "SMTS¹¥»÷,³å°¡!!!")
+(set-strategic-number sn-maximum-town-size 100);²âÊÔÊıÖµ
 (attack-now)
 (set-goal attackyet yes)
 )
@@ -393,22 +393,22 @@
 (defrule
 (goal attackstat 3)
 =>
-;SMTSæ’¤é”€
-(set-strategic-number sn-maximum-town-size 40);æµ‹è¯•æ•°å€¼
+;SMTS³·Ïú
+(set-strategic-number sn-maximum-town-size 40);²âÊÔÊıÖµ
 )
 
 
 #end-if
 
 
-;è‡ªåŠ¨æé†’
+;×Ô¶¯ÌáĞÑ
 
 
-;å¼ƒæƒ(Beta)
+;ÆúÈ¨(Beta)
 
 (load "Genius\resign")
 
-;å“åº”èŠå¤©æŒ‡ä»¤
+;ÏìÓ¦ÁÄÌìÖ¸Áî
 
 (load "Genius\chat")
 
